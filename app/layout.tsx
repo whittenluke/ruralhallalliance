@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Link from "next/link";
 import { Inter, Newsreader } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { primaryNav } from "@/lib/navigation";
@@ -60,7 +61,15 @@ export default async function RootLayout({
               <a href="/media">Media Inquiries</a>
             </nav>
             <div className="footer-meta">
-              <p className="org-name">{settings.site_title}</p>
+              <Link className="footer-brand" href="/">
+                <img
+                  className="footer-logo"
+                  src="/rural-hall-alliance-logo-light.png"
+                  alt={settings.site_title}
+                  width={240}
+                  height={80}
+                />
+              </Link>
               {(settings.general_email || settings.media_email) && (
                 <p className="footer-emails">
                   {settings.general_email ? (

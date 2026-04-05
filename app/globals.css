@@ -403,11 +403,25 @@ p {
   margin: 0 0 0.75rem 0;
 }
 
-.site-footer .org-name {
-  font-family: var(--font-newsreader), Georgia, serif;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-text);
+.site-footer .footer-brand {
+  display: inline-block;
+  margin: 0 0 0.75rem 0;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.site-footer .footer-brand:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.site-footer .footer-logo {
+  display: block;
+  height: auto;
+  max-height: 3rem;
+  width: auto;
+  max-width: min(100%, 14rem);
 }
 
 .site-footer .footer-emails a {
