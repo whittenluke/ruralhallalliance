@@ -25,11 +25,11 @@ type NetlifyFormProps = {
 function formDataToUrlEncoded(form: HTMLFormElement): string {
   const formData = new FormData(form);
   const params = new URLSearchParams();
-  for (const [key, value] of formData.entries()) {
+  formData.forEach((value, key) => {
     if (typeof value === "string") {
       params.append(key, value);
     }
-  }
+  });
   return params.toString();
 }
 
