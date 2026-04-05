@@ -97,11 +97,13 @@ collections:
     label: "Calendar"
     folder: "content/calendar"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "File name, e.g. 2026-04-13-town-meeting" }
+      - { label: "Date (MM/DD/YYYY)", name: "date", widget: "string", hint: "e.g. 04/13/2026" }
       - { label: "Time", name: "time", widget: "string", required: false }
-      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false, hint: "Venue name (shown with time on one line)" }
+      - { label: "Address", name: "address", widget: "string", required: false, hint: "Street address on its own line below" }
       - { label: "External Link", name: "external_link", widget: "string", required: false }
       - { label: "Summary", name: "summary", widget: "text", required: false }

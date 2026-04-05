@@ -1,30 +1,50 @@
-import { getCalendarEntries } from "@/lib/calendar";
+import { EventCard } from "@/components/event-card";
+import { getCalendarEntries, splitCalendarEntries } from "@/lib/calendar";
 
 export default function CalendarPage() {
   const entries = getCalendarEntries();
+  const { upcoming, past } = splitCalendarEntries(entries);
+
   return (
-    <div className="container">
-    <section>
-      <h1>Calendar</h1>
-      <p>Relevant meetings and local events.</p>
-      <ul>
-        {entries.map((e) => (
-          <li key={`${e.date}-${e.title}`}>
-            <h3>{e.title}</h3>
-            <p>
-              {e.date}
-              {e.time ? ` • ${e.time}` : ""} {e.location ? ` • ${e.location}` : ""}
-            </p>
-            {e.summary ? <p>{e.summary}</p> : null}
-            {e.external_link ? (
-              <p>
-                <a href={e.external_link}>More info</a>
-              </p>
-            ) : null}
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div className="container calendar-page">
+      <header className="calendar-page-header">
+        <h1>Calendar</h1>
+        <p className="calendar-page-lede">
+          Meetings and local events. Upcoming items are listed first, followed by past events.
+        </p>
+      </header>
+
+      {upcoming.length === 0 && past.length === 0 ? (
+        <p className="calendar-page-empty">No events are published yet.</p>
+      ) : (
+        <div className="calendar-stacks">
+          {upcoming.length > 0 ? (
+            <section className="calendar-stack" aria-labelledby="calendar-upcoming-heading">
+              <h2 id="calendar-upcoming-heading" className="calendar-stack-heading">
+                Upcoming
+              </h2>
+              <div className="event-card-stack">
+                {upcoming.map((e) => (
+                  <EventCard key={`${e.date}-${e.title}-${e.time ?? ""}`} event={e} />
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {past.length > 0 ? (
+            <section className="calendar-stack" aria-labelledby="calendar-past-heading">
+              <h2 id="calendar-past-heading" className="calendar-stack-heading">
+                Past
+              </h2>
+              <div className="event-card-stack">
+                {past.map((e) => (
+                  <EventCard key={`${e.date}-${e.title}-${e.time ?? ""}`} event={e} />
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 }
