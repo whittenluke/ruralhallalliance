@@ -1,5 +1,6 @@
 export default function MembershipPage() {
   return (
+    <div className="container">
     <section>
       <h1>Membership</h1>
       <p>Structured intake path for people interested in joining or participating.</p>
@@ -51,5 +52,6 @@ export default function MembershipPage() {
         <button type="submit">Submit</button>
       </form>
     </section>
+    </div>
   );
 }

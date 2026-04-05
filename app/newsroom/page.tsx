@@ -4,6 +4,7 @@ import { getAllNewsroomEntries } from "@/lib/newsroom";
 export default function NewsroomIndexPage() {
   const entries = getAllNewsroomEntries();
   return (
+    <div className="container">
     <section>
       <h1>Newsroom</h1>
       <p>A public archive of official communications.</p>
@@ -19,5 +20,6 @@ export default function NewsroomIndexPage() {
         ))}
       </ul>
     </section>
+    </div>
   );
 }

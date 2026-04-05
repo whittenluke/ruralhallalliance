@@ -5,15 +5,18 @@ export default function NewsroomDetailPage({ params }: { params: { slug: string 
   const entry = getNewsroomEntryBySlug(params.slug);
   if (!entry) {
     return (
-      <section>
-        <p>Entry not found.</p>
-        <p>
-          <Link href="/newsroom">Back to Newsroom</Link>
-        </p>
-      </section>
+      <div className="container">
+        <section>
+          <p>Entry not found.</p>
+          <p>
+            <Link href="/newsroom">Back to Newsroom</Link>
+          </p>
+        </section>
+      </div>
     );
   }
   return (
+    <div className="container">
     <section>
       <p>
         <Link href="/newsroom">← Back to Newsroom</Link>
@@ -27,6 +30,7 @@ export default function NewsroomDetailPage({ params }: { params: { slug: string 
         <div style={{ whiteSpace: "pre-wrap" }}>{entry.body}</div>
       </article>
     </section>
+    </div>
   );
 }
 

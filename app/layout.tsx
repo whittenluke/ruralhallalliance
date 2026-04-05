@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Newsreader } from "next/font/google";
+import { SiteHeader } from "@/components/site-header";
+import { primaryNav } from "@/lib/navigation";
 import { getSiteSettings } from "@/lib/site-settings";
 import "./globals.css";
 
@@ -45,33 +47,12 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
       <body className={inter.className}>
-        <header className="site-header">
-          <div className="container">
-            <a className="brand" href="/" aria-label={settings.site_title}>
-              <img
-                src="/rural-hall-alliance-logo-dark.png"
-                alt={settings.site_title}
-              />
-            </a>
-            <div className="site-header-actions">
-              <nav className="nav" aria-label="Primary">
-                {headerNav.map(({ href, label }) => (
-                  <a key={href} href={href}>
-                    {label}
-                  </a>
-                ))}
-              </nav>
-              <a className="btn btn-primary header-cta" href="/media">
-                Media Inquiries
-              </a>
-            </div>
-          </div>
-        </header>
-        <main className="container">{children}</main>
+        <SiteHeader siteTitle={settings.site_title} />
+        <main className="site-main">{children}</main>
         <footer className="site-footer">
           <div className="container">
             <nav className="footer-nav" aria-label="Footer">
-              {headerNav.map(({ href, label }) => (
+              {primaryNav.map(({ href, label }) => (
                 <a key={href} href={href}>
                   {label}
                 </a>

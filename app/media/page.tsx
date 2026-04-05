@@ -1,5 +1,6 @@
 export default function MediaPage() {
   return (
+    <div className="container">
     <section>
       <h1>Media Inquiries</h1>
       <p>Direct, professional contact path for reporters.</p>
@@ -46,5 +47,6 @@ export default function MediaPage() {
         <button type="submit">Submit</button>
       </form>
     </section>
+    </div>
   );
 }

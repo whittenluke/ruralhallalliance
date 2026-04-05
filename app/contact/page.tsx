@@ -1,5 +1,6 @@
 export default function ContactPage() {
   return (
+    <div className="container">
     <section>
       <h1>Contact Us</h1>
       <p>General communication channel for non-media inquiries.</p>
@@ -34,5 +35,6 @@ export default function ContactPage() {
         <button type="submit">Submit</button>
       </form>
     </section>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { getCalendarEntries } from "@/lib/calendar";
 export default function CalendarPage() {
   const entries = getCalendarEntries();
   return (
+    <div className="container">
     <section>
       <h1>Calendar</h1>
       <p>Relevant meetings and local events.</p>
@@ -24,5 +25,6 @@ export default function CalendarPage() {
         ))}
       </ul>
     </section>
+    </div>
   );
 }
