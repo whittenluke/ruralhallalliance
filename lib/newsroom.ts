@@ -51,3 +51,16 @@ export function getNewsroomEntryBySlug(slug: string) {
   const entries = getAllNewsroomEntries();
   return entries.find((e) => e.slug === slug) || null;
 }
+
+/** Human-readable date for lists and article headers (handles YYYY-MM-DD and ISO datetimes). */
+export function formatNewsroomDisplayDate(dateStr: string): string {
+  const s = dateStr.trim();
+  if (!s) return "";
+  const d = s.includes("T") ? new Date(s) : new Date(`${s}T12:00:00`);
+  if (Number.isNaN(d.getTime())) return s;
+  return d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+}

@@ -1,4 +1,8 @@
-import { getAllNewsroomEntries, getNewsroomEntryBySlug } from "@/lib/newsroom";
+import {
+  formatNewsroomDisplayDate,
+  getAllNewsroomEntries,
+  getNewsroomEntryBySlug
+} from "@/lib/newsroom";
 import Link from "next/link";
 
 export default function NewsroomDetailPage({ params }: { params: { slug: string } }) {
@@ -15,21 +19,39 @@ export default function NewsroomDetailPage({ params }: { params: { slug: string 
       </div>
     );
   }
+  const displayDate = formatNewsroomDisplayDate(entry.date);
+
   return (
     <div className="container">
-    <section>
-      <p>
-        <Link href="/newsroom">← Back to Newsroom</Link>
-      </p>
-      <h1 className="page-title">{entry.title}</h1>
-      <p>
-        {entry.date} • {entry.category}
-      </p>
-      <article>
-        <p>{entry.summary}</p>
-        <div style={{ whiteSpace: "pre-wrap" }}>{entry.body}</div>
+      <article className="newsroom-article">
+        <p className="newsroom-article-back">
+          <Link href="/newsroom">← Back to Newsroom</Link>
+        </p>
+        <header className="newsroom-article-header">
+          <h1 className="page-title">{entry.title}</h1>
+          <p className="newsroom-article-meta">
+            {displayDate ? (
+              <>
+                <time dateTime={entry.date}>{displayDate}</time>
+                {entry.category ? (
+                  <>
+                    <span className="newsroom-preview-meta-sep" aria-hidden>
+                      ·
+                    </span>
+                    <span>{entry.category}</span>
+                  </>
+                ) : null}
+              </>
+            ) : (
+              entry.category
+            )}
+          </p>
+        </header>
+        <div className="newsroom-article-body prose">
+          {entry.summary ? <p className="newsroom-article-deck">{entry.summary}</p> : null}
+          <div className="newsroom-article-text">{entry.body.trim()}</div>
+        </div>
       </article>
-    </section>
     </div>
   );
 }
