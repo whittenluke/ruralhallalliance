@@ -1,5 +1,5 @@
 ---
 title: Contact Us
-summary: General communication channel for non-media inquiries.
+summary: Reach out below
 general_email: info@ruralhallalliance.org
 ---

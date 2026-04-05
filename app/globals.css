@@ -641,7 +641,7 @@ button:not([type]):hover {
 }
 
 .event-card-title {
-  margin: 0 0 0.35rem 0;
+  margin: 0 0 0.5rem 0;
   font-family: var(--font-newsreader), Georgia, serif;
   font-size: 1.2rem;
   font-weight: 600;
@@ -649,34 +649,27 @@ button:not([type]):hover {
   color: var(--color-text);
 }
 
-.event-card-date {
-  margin: 0 0 0.25rem 0;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--color-navy);
-}
-
-.event-card-where {
+/* When / where / address: quieter than summary body */
+.event-card-details {
   margin: 0 0 0.75rem 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #5c6770;
+  letter-spacing: 0.01em;
 }
 
-.event-card-where .event-card-meta {
-  margin: 0 0 0.3rem 0;
-  font-size: 0.9375rem;
-  color: var(--color-text);
-  opacity: 0.88;
+.event-card-datetime {
+  margin: 0 0 0.2rem 0;
 }
 
-.event-card-where .event-card-meta:only-child {
-  margin-bottom: 0;
+.event-card-location {
+  margin: 0 0 0.15rem 0;
 }
 
 .event-card-address {
   margin: 0;
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  color: var(--color-text);
-  opacity: 0.88;
 }
 
 .event-card-summary {

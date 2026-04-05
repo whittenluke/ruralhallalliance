@@ -6,5 +6,5 @@ time: "7:00 PM"
 location: Town Hall
 address: 423 Bethania-Rural Hall Rd, Rural Hall, NC 27045
 external_link:
-summary:
+summary: 
 ---
