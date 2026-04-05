@@ -1,0 +1,107 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/rural-hall-alliance
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "content/settings/site-settings.md"
+        label: "Site Settings"
+        name: "site_settings"
+        fields:
+          - { label: "Site Title", name: "site_title", widget: "string" }
+          - { label: "Site Tagline", name: "site_tagline", widget: "string", required: false }
+          - { label: "General Email", name: "general_email", widget: "string" }
+          - { label: "Media Email", name: "media_email", widget: "string" }
+          - { label: "Footer Text", name: "footer_text", widget: "text", required: false }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "content/pages/home.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Summary", name: "hero_summary", widget: "text" }
+          - { label: "Primary CTA Label", name: "hero_primary_cta_label", widget: "string" }
+          - { label: "Primary CTA Link", name: "hero_primary_cta_link", widget: "string" }
+          - { label: "Secondary CTA Label", name: "hero_secondary_cta_label", widget: "string", required: false }
+          - { label: "Secondary CTA Link", name: "hero_secondary_cta_link", widget: "string", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Intro Heading", name: "intro_heading", widget: "string", required: false }
+          - { label: "Intro Body", name: "intro_body", widget: "markdown", required: false }
+      - file: "content/pages/about.md"
+        label: "About"
+        name: "about"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+          - { label: "Mission Heading", name: "mission_heading", widget: "string", required: false }
+          - { label: "Mission Body", name: "mission_body", widget: "markdown", required: false }
+          - { label: "Who We Serve Heading", name: "who_we_serve_heading", widget: "string", required: false }
+          - { label: "Who We Serve Body", name: "who_we_serve_body", widget: "markdown", required: false }
+          - { label: "Body", name: "body", widget: "markdown", required: false }
+      - file: "content/pages/media.md"
+        label: "Media"
+        name: "media"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+          - { label: "Media Email", name: "media_email", widget: "string", required: false }
+      - file: "content/pages/membership.md"
+        label: "Membership"
+        name: "membership"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+      - file: "content/pages/contact.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+          - { label: "General Email", name: "general_email", widget: "string", required: false }
+      - file: "content/pages/calendar-page.md"
+        label: "Calendar Page"
+        name: "calendar_page"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+
+  - name: "newsroom"
+    label: "Newsroom"
+    folder: "content/newsroom"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["Press Release", "Statement", "Community Update", "Announcement"] }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "calendar"
+    label: "Calendar"
+    folder: "content/calendar"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Time", name: "time", widget: "string", required: false }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "External Link", name: "external_link", widget: "string", required: false }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
