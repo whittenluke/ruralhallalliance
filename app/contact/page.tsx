@@ -1,11 +1,18 @@
 import { FormSubmitButton, NetlifyForm } from "@/components/netlify-form";
+import { getContactPageContent } from "@/lib/content-pages";
 
 export default function ContactPage() {
+  const page = getContactPageContent();
   return (
     <div className="container">
       <section>
-        <h1>Contact Us</h1>
-        <p>General communication channel for non-media inquiries.</p>
+        <h1 className="page-title">{page.title}</h1>
+        {page.summary ? <p className="page-lede">{page.summary}</p> : null}
+        {page.general_email ? (
+          <p>
+            <a href={`mailto:${page.general_email}`}>{page.general_email}</a>
+          </p>
+        ) : null}
         <NetlifyForm name="contact" formName="contact">
           <p hidden>
             <label>

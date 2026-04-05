@@ -1,17 +1,17 @@
 import { EventCard } from "@/components/event-card";
 import { getCalendarEntries, splitCalendarEntries } from "@/lib/calendar";
+import { getCalendarPageContent } from "@/lib/content-pages";
 
 export default function CalendarPage() {
+  const page = getCalendarPageContent();
   const entries = getCalendarEntries();
   const { upcoming, past } = splitCalendarEntries(entries);
 
   return (
     <div className="container calendar-page">
       <header className="calendar-page-header">
-        <h1>Calendar</h1>
-        <p className="calendar-page-lede">
-          Meetings and local events. Upcoming items are listed first, followed by past events.
-        </p>
+        <h1 className="page-title">{page.title}</h1>
+        {page.summary ? <p className="page-lede">{page.summary}</p> : null}
       </header>
 
       {upcoming.length === 0 && past.length === 0 ? (

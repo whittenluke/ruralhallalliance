@@ -66,8 +66,6 @@ export default async function RootLayout({
                   className="footer-logo"
                   src="/rural-hall-alliance-logo-light.png"
                   alt={settings.site_title}
-                  width={240}
-                  height={80}
                 />
               </Link>
               {(settings.general_email || settings.media_email) && (

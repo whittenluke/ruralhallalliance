@@ -1,4 +1,4 @@
 ---
 title: Membership
-summary: Express interest in joining or participating with Rural Hall Alliance.
+summary: Apply to participate with Rural Hall Alliance.
 ---

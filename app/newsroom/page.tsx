@@ -6,7 +6,7 @@ export default function NewsroomIndexPage() {
   return (
     <div className="container">
     <section>
-      <h1>Newsroom</h1>
+      <h1 className="page-title">Newsroom</h1>
       <p>A public archive of official communications.</p>
       <ul>
         {entries.map((e) => (

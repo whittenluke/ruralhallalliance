@@ -54,6 +54,14 @@ h6 {
   font-weight: 600;
 }
 
+/* Explicit size: nested <section><h1> is often downscaled by UA styles; <header><h1> is not */
+.page-title {
+  margin: 0 0 0.5rem 0;
+  font-size: clamp(1.875rem, 1.2vw + 1.65rem, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
 p,
 ul,
 ol {
@@ -418,10 +426,14 @@ p {
 
 .site-footer .footer-logo {
   display: block;
-  height: auto;
-  max-height: 3rem;
+  height: 36px;
   width: auto;
-  max-width: min(100%, 14rem);
+}
+
+@media (min-width: 900px) {
+  .site-footer .footer-logo {
+    height: 40px;
+  }
 }
 
 .site-footer .footer-emails a {
@@ -622,14 +634,28 @@ button[type="submit"]:disabled {
   max-width: 42rem;
 }
 
-.calendar-page-header h1 {
-  margin-bottom: 0.5rem;
-}
-
-.calendar-page-lede {
-  margin: 0;
+.page-lede {
+  margin: 0 0 1rem 0;
   color: var(--color-text);
   opacity: 0.92;
+}
+
+.calendar-page-header .page-lede:last-child {
+  margin-bottom: 0;
+}
+
+.about-page-subheading {
+  margin: 1.5rem 0 0.5rem 0;
+  font-size: 1.35rem;
+}
+
+.about-page-block {
+  margin: 0 0 1rem 0;
+  white-space: pre-wrap;
+}
+
+.about-page-block:last-child {
+  margin-bottom: 0;
 }
 
 .calendar-page-empty {

@@ -1,11 +1,13 @@
 import { FormSubmitButton, NetlifyForm } from "@/components/netlify-form";
+import { getMembershipPageContent } from "@/lib/content-pages";
 
 export default function MembershipPage() {
+  const page = getMembershipPageContent();
   return (
     <div className="container">
       <section>
-        <h1>Membership</h1>
-        <p>Structured intake path for people interested in joining or participating.</p>
+        <h1 className="page-title">{page.title}</h1>
+        {page.summary ? <p className="page-lede">{page.summary}</p> : null}
         <NetlifyForm name="membership" formName="membership">
           <p hidden>
             <label>

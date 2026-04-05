@@ -21,7 +21,7 @@ export default function NewsroomDetailPage({ params }: { params: { slug: string 
       <p>
         <Link href="/newsroom">← Back to Newsroom</Link>
       </p>
-      <h1>{entry.title}</h1>
+      <h1 className="page-title">{entry.title}</h1>
       <p>
         {entry.date} • {entry.category}
       </p>

@@ -7,7 +7,7 @@ export default function MediaPage() {
   return (
     <div className="container">
       <section>
-        <h1>{page.title}</h1>
+        <h1 className="page-title">{page.title}</h1>
         {page.summary ? <p>{page.summary}</p> : null}
         {page.media_email ? (
           <p>

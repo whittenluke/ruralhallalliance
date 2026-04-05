@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 
 export interface CalendarEntry {
   title: string;
@@ -12,29 +13,6 @@ export interface CalendarEntry {
 }
 
 const calendarDir = path.join(process.cwd(), "content", "calendar");
-
-function parseFrontmatter(fileContent: string): Record<string, string> {
-  if (!fileContent.startsWith("---")) return {};
-  const end = fileContent.indexOf("---", 3);
-  if (end === -1) return {};
-  const head = fileContent.slice(3, end).trim();
-  const data: Record<string, string> = {};
-  head.split("\n").forEach((line) => {
-    const idx = line.indexOf(":");
-    if (idx > -1) {
-      const key = line.slice(0, idx).trim();
-      let val = line.slice(idx + 1).trim();
-      if (
-        (val.startsWith('"') && val.endsWith('"')) ||
-        (val.startsWith("'") && val.endsWith("'"))
-      ) {
-        val = val.slice(1, -1);
-      }
-      data[key] = val;
-    }
-  });
-  return data;
-}
 
 /** Accepts MM/DD/YYYY (preferred in content) or legacy YYYY-MM-DD. */
 export function parseCalendarDateString(dateStr: string): Date | null {
@@ -127,16 +105,24 @@ export function splitCalendarEntries(
 export function getCalendarEntries(): CalendarEntry[] {
   const files = fs.readdirSync(calendarDir).filter((f) => f.endsWith(".md"));
   const entries = files.map((filename) => {
-    const content = fs.readFileSync(path.join(calendarDir, filename), "utf8");
-    const data = parseFrontmatter(content);
+    const raw = fs.readFileSync(path.join(calendarDir, filename), "utf8");
+    const { data } = matter(raw);
+    const d = data as Record<string, unknown>;
+    const str = (k: string) => (d[k] == null ? "" : String(d[k]).trim());
+    const opt = (k: string) => {
+      const v = d[k];
+      if (v == null) return undefined;
+      const s = String(v).trim();
+      return s || undefined;
+    };
     return {
-      title: String(data.title || ""),
-      date: String(data.date || ""),
-      time: data.time,
-      location: data.location,
-      address: data.address,
-      external_link: data.external_link,
-      summary: data.summary
+      title: str("title"),
+      date: str("date"),
+      time: opt("time"),
+      location: opt("location"),
+      address: opt("address"),
+      external_link: opt("external_link"),
+      summary: opt("summary")
     };
   });
   entries.sort((a, b) => compareEntriesByDate(a, b, 1));
