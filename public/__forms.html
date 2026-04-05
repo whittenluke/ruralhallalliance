@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form definitions</title>
+  </head>
+  <body>
+    <!-- Deploy-time blueprints only (hidden). Real forms live in the app and POST here. -->
+    <form
+      name="media-inquiries"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="media-inquiries" />
+      <input name="bot-field" type="text" />
+      <input name="full_name" type="text" />
+      <input name="outlet_name" type="text" />
+      <input name="email" type="email" />
+      <input name="phone_number" type="tel" />
+      <input name="deadline" type="text" />
+      <input name="topic" type="text" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" type="text" />
+      <input name="full_name" type="text" />
+      <input name="email" type="email" />
+      <input name="subject" type="text" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="membership" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="membership" />
+      <input name="bot-field" type="text" />
+      <input name="full_name" type="text" />
+      <input name="email" type="email" />
+      <input name="phone_number" type="tel" />
+      <select name="relationship_to_community">
+        <option value="Resident">Resident</option>
+        <option value="Business Owner">Business Owner</option>
+        <option value="Supporter">Supporter</option>
+        <option value="Other">Other</option>
+      </select>
+      <input name="organization_or_business_name" type="text" />
+      <input name="neighborhood_or_area" type="text" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>

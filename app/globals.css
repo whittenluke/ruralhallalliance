@@ -582,6 +582,26 @@ button:not([type]):hover {
   filter: brightness(0.95);
 }
 
+button[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.form-feedback {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+}
+
+.form-feedback--success {
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+.form-feedback--error {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
 /* Calendar — restrained event panels (v1, no month grid) */
 .calendar-page-header {
   margin-bottom: 2rem;
