@@ -5,7 +5,7 @@ export default function NewsroomIndexPage() {
   const entries = getAllNewsroomEntries();
 
   return (
-    <div className="container">
+    <div className="container newsroom-page">
       <section className="newsroom-archive-section" aria-label="Newsroom archive">
         <header className="newsroom-archive-header">
           <h1 className="page-title">Newsroom</h1>

@@ -29,6 +29,11 @@
   box-sizing: border-box;
 }
 
+/* Reserve scrollbar width so layout doesn’t shift between short and long pages */
+html {
+  scrollbar-gutter: stable;
+}
+
 html,
 body {
   padding: 0;
@@ -352,14 +357,15 @@ p {
 .site-footer {
   border-top: 1px solid var(--color-border);
   margin-top: 2rem;
-  padding: var(--section-gap-mobile) 0 1.5rem;
+  padding: 1.25rem 0 1.5rem;
   background: var(--color-alt);
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 @media (min-width: 768px) {
   .site-footer {
-    padding-top: var(--section-gap-desktop);
+    padding-top: 1.5rem;
+    padding-bottom: 1.75rem;
   }
 }
 
@@ -629,6 +635,13 @@ button[type="submit"]:disabled {
 }
 
 /* Calendar — restrained event panels (v1, no month grid) */
+.calendar-page,
+.newsroom-page {
+  min-height: max(26rem, calc(100vh - 12rem));
+  min-height: max(26rem, calc(100dvh - 12rem));
+  padding-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+
 .calendar-page-header {
   margin-bottom: 2rem;
   max-width: 42rem;
