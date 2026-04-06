@@ -98,10 +98,12 @@ p {
 }
 
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
   background: var(--color-navy);
   color: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
 }
 
 .site-header-inner {
@@ -561,12 +563,87 @@ p {
   filter: none;
 }
 
-.home-intro h2 {
-  margin-bottom: 1rem;
+/* Wider than hero copy (~58ch); uses horizontal page padding, not .container width cap */
+.home-intro {
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 4vw, 1.5rem);
 }
 
-.home-intro .prose {
+.home-intro-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
+  max-width: min(100%, 72rem);
+  margin-inline: auto;
+}
+
+.home-intro-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-intro-title {
+  margin: 0 0 1rem 0;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(1.5rem, 2.5vw + 1rem, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text);
+  max-width: 50ch;
+}
+
+.home-intro-copy .home-intro-title:last-child {
   margin-bottom: 0;
+}
+
+.home-intro-text {
+  margin: 0;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: clamp(1.0625rem, 1vw + 0.95rem, 1.1875rem);
+  line-height: 1.65;
+  color: var(--color-text);
+  max-width: min(100%, 48rem);
+}
+
+.home-intro-seal {
+  display: block;
+  flex-shrink: 0;
+  width: clamp(7.5rem, 20vw, 13rem);
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 900px) {
+  .home-intro-text {
+    font-size: 1.125rem;
+    line-height: 1.68;
+  }
+}
+
+@media (min-width: 1100px) {
+  .home-intro-seal {
+    width: clamp(13.25rem, 17vw, 16rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-intro-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .home-intro-seal {
+    width: min(10.5rem, 70vw);
+    margin-inline: auto;
+  }
+
+  .home-intro-text {
+    max-width: none;
+  }
 }
 
 /* Homepage — preview sections (alternating surfaces below hero / intro) */

@@ -40,10 +40,28 @@ export default function HomePage() {
       </section>
 
       {(home.intro_heading || home.intro_body) && (
-        <div className="container section-block home-intro">
-          {home.intro_heading ? <h2>{home.intro_heading}</h2> : null}
-          {home.intro_body ? <p className="prose">{home.intro_body}</p> : null}
-        </div>
+        <section
+          className="section-block home-intro"
+          aria-labelledby={home.intro_heading ? "home-intro-heading" : undefined}
+        >
+          <div className="home-intro-inner">
+            <div className="home-intro-copy">
+              {home.intro_heading ? (
+                <h2 id="home-intro-heading" className="home-intro-title">
+                  {home.intro_heading}
+                </h2>
+              ) : null}
+              {home.intro_body ? <p className="home-intro-text">{home.intro_body}</p> : null}
+            </div>
+            <img
+              className="home-intro-seal"
+              src="/rural-hall-seal.webp"
+              alt="Town of Rural Hall seal"
+              width={220}
+              height={220}
+            />
+          </div>
+        </section>
       )}
 
       <HomeLatestUpdates />
