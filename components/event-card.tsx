@@ -3,9 +3,16 @@ import { formatCalendarDate } from "@/lib/calendar";
 
 type Props = {
   event: CalendarEntry;
+  /** Used when `external_link` is empty (e.g. link to full calendar from home). */
+  fallbackDetailsHref?: string;
+  fallbackDetailsLabel?: string;
 };
 
-export function EventCard({ event: e }: Props) {
+export function EventCard({
+  event: e,
+  fallbackDetailsHref,
+  fallbackDetailsLabel = "View on calendar"
+}: Props) {
   const dateLine = formatCalendarDate(e.date);
   const time = e.time?.trim();
   const datetimeLine = time ? `${dateLine} | ${time}` : dateLine;
@@ -25,6 +32,12 @@ export function EventCard({ event: e }: Props) {
         <p className="event-card-more">
           <a href={e.external_link.trim()} className="event-card-link">
             More details
+          </a>
+        </p>
+      ) : fallbackDetailsHref ? (
+        <p className="event-card-more">
+          <a href={fallbackDetailsHref} className="event-card-link">
+            {fallbackDetailsLabel}
           </a>
         </p>
       ) : null}

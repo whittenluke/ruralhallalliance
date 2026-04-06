@@ -52,6 +52,12 @@ export function getNewsroomEntryBySlug(slug: string) {
   return entries.find((e) => e.slug === slug) || null;
 }
 
+/** Newest-first slice for home and previews. */
+export function getLatestNewsroomEntries(limit: number) {
+  const n = Math.max(0, Math.floor(limit));
+  return getAllNewsroomEntries().slice(0, n);
+}
+
 /** Human-readable date for lists and article headers (handles YYYY-MM-DD and ISO datetimes). */
 export function formatNewsroomDisplayDate(dateStr: string): string {
   const s = dateStr.trim();

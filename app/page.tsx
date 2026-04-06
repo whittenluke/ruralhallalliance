@@ -1,3 +1,6 @@
+import { HomeGetInvolved } from "@/components/home-get-involved";
+import { HomeLatestUpdates } from "@/components/home-latest-updates";
+import { HomeUpcomingEvents } from "@/components/home-upcoming-events";
 import { getHomePageContent } from "@/lib/home-page";
 
 export default function HomePage() {
@@ -42,6 +45,10 @@ export default function HomePage() {
           {home.intro_body ? <p className="prose">{home.intro_body}</p> : null}
         </div>
       )}
+
+      <HomeLatestUpdates />
+      <HomeUpcomingEvents />
+      <HomeGetInvolved />
     </>
   );
 }

@@ -102,6 +102,13 @@ export function splitCalendarEntries(
   return { upcoming, past };
 }
 
+/** Next upcoming events, soonest first (for home preview). */
+export function getUpcomingCalendarPreview(limit: number, reference: Date = new Date()) {
+  const n = Math.max(0, Math.floor(limit));
+  const { upcoming } = splitCalendarEntries(getCalendarEntries(), reference);
+  return upcoming.slice(0, n);
+}
+
 export function getCalendarEntries(): CalendarEntry[] {
   const files = fs.readdirSync(calendarDir).filter((f) => f.endsWith(".md"));
   const entries = files.map((filename) => {
