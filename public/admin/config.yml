@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR_GITHUB_USERNAME/rural-hall-alliance
+  repo: whittenluke/ruralhallalliance
   branch: main
 
 media_folder: "public/uploads"
@@ -79,9 +79,9 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Summary", name: "summary", widget: "text", required: false }
 
-  - name: "newsroom"
+  - name: "news"
     label: "News"
-    folder: "content/newsroom"
+    folder: "content/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:

@@ -86,8 +86,8 @@ The admin will not edit content directly in code.
 Required Routes
 /
 /about
-/newsroom
-/newsroom/[slug]
+/news
+/news/[slug]
 /media
 /membership
 /contact
@@ -136,7 +136,7 @@ Hero Requirements
 
 Organization name
 One concise positioning statement
-Primary button: View Newsroom
+Primary button: View News
 Secondary button: Media Inquiries
 Local image
 
@@ -195,7 +195,7 @@ Announcement
 Press Release Detail Pages
 
 Purpose
-Provide a permanent page for each newsroom entry.
+Provide a permanent page for each news entry.
 
 Required Elements
 
@@ -298,7 +298,7 @@ Body and UI: Inter
 Typography Rules
 Headings should be formal, clear, and restrained.
 Body text should be highly readable.
-Newsroom titles should use the heading font.
+News titles should use the heading font.
 Navigation, buttons, labels, and form text should use the body font.
 Body copy should not exceed a comfortable reading width.
 8.5 Layout and Spacing
@@ -342,7 +342,7 @@ Photography should support the identity of the site, not dominate it.
 9.1 Repository Structure
 /app
   /(site pages)
-  /newsroom/[slug]
+  /news/[slug]
   /about
   /media
   /membership
@@ -357,7 +357,7 @@ Photography should support the identity of the site, not dominate it.
     membership.md
     contact.md
     calendar-page.md
-  /newsroom
+  /news
     2026-04-01-example-entry.md
   /calendar
     2026-04-15-town-meeting.md
@@ -420,7 +420,7 @@ body
 Newsroom
 
 Type: folder
-Purpose: Create repeatable newsroom entries
+Purpose: Create repeatable news entries
 
 Fields
 
@@ -555,15 +555,15 @@ Navigation and footer link structure is complete
 Phase 4: Newsroom System
 Objectives
 Build the newsroom listing page
-Build the dynamic newsroom detail route
-Read newsroom content from markdown files
+Build the dynamic news detail route
+Read news content from markdown files
 Display entries in reverse chronological order
 Deliverables
-Newsroom index page
+News index page
 Newsroom detail page template
-Markdown parsing for newsroom content
+Markdown parsing for news content
 Acceptance Criteria
-Newsroom entries render from repository content
+News entries render from repository content
 Individual entry pages work by slug
 Listing order is reverse chronological
 Phase 5: Calendar Content System
@@ -620,7 +620,7 @@ Use the Decap GitHub backend. The admin will sign in with a GitHub account that 
 
 Acceptance Criteria
 Admin can log in at /admin
-Admin can create a newsroom entry
+Admin can create a news entry
 Admin can edit the About page
 Admin can upload an image
 Published content changes appear on the live site after deploy
@@ -632,7 +632,7 @@ Replace placeholders with actual content model fields
 Deliverables
 Home page uses content files
 About page uses content files
-Newsroom uses content files
+News uses content files
 Calendar uses content files
 Shared emails and footer text use site settings
 Acceptance Criteria
@@ -683,7 +683,7 @@ Final logo files
 Local photography
 Initial homepage copy
 Initial About Us copy
-Initial newsroom entries
+Initial news entries
 Initial calendar items
 General contact email
 Media contact email
@@ -720,7 +720,7 @@ Build the global layout system
 Build the header and footer
 Build the homepage shell
 Build the remaining static routes
-Build the newsroom system
+Build the news system
 Build the calendar system
 Build and verify Netlify Forms
 Add Decap CMS

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { formatNewsroomDisplayDate, getLatestNewsroomEntries } from "@/lib/newsroom";
+import { formatNewsDisplayDate, getLatestNewsEntries } from "@/lib/news";
 
 export function HomeLatestUpdates() {
-  const entries = getLatestNewsroomEntries(3);
+  const entries = getLatestNewsEntries(3);
 
   return (
     <section className="home-section home-section--alt" aria-labelledby="home-latest-heading">
@@ -16,48 +16,48 @@ export function HomeLatestUpdates() {
               Recent official communications from Rural Hall Alliance.
             </p>
           </div>
-          <Link href="/newsroom" className="home-section-all-link">
+          <Link href="/news" className="home-section-all-link">
             All news
           </Link>
         </header>
 
         {entries.length === 0 ? (
-          <p className="newsroom-archive-empty">No news entries yet.</p>
+          <p className="news-archive-empty">No news entries yet.</p>
         ) : (
-          <ul className="newsroom-archive-list home-elevated-list">
+          <ul className="news-archive-list home-elevated-list">
             {entries.map((e) => {
-              const href = `/newsroom/${e.slug}`;
-              const displayDate = formatNewsroomDisplayDate(e.date);
+              const href = `/news/${e.slug}`;
+              const displayDate = formatNewsDisplayDate(e.date);
               return (
-                <li key={e.slug} className="newsroom-archive-row">
-                  <article className="newsroom-preview">
-                    <h3 className="newsroom-preview-title">
+                <li key={e.slug} className="news-archive-row">
+                  <article className="news-preview">
+                    <h3 className="news-preview-title">
                       <Link href={href}>{e.title}</Link>
                     </h3>
                     {displayDate || e.category ? (
-                      <p className="newsroom-preview-meta">
+                      <p className="news-preview-meta">
                         {displayDate ? (
                           <>
                             <time dateTime={e.date}>{displayDate}</time>
                             {e.category ? (
                               <>
-                                <span className="newsroom-preview-meta-sep" aria-hidden>
+                                <span className="news-preview-meta-sep" aria-hidden>
                                   ·
                                 </span>
-                                <span className="newsroom-preview-category">{e.category}</span>
+                                <span className="news-preview-category">{e.category}</span>
                               </>
                             ) : null}
                           </>
                         ) : (
-                          <span className="newsroom-preview-category">{e.category}</span>
+                          <span className="news-preview-category">{e.category}</span>
                         )}
                       </p>
                     ) : null}
                     {e.summary ? (
-                      <p className="newsroom-preview-summary">{e.summary}</p>
+                      <p className="news-preview-summary">{e.summary}</p>
                     ) : null}
-                    <p className="newsroom-preview-cta">
-                      <Link href={href} className="newsroom-read-more">
+                    <p className="news-preview-cta">
+                      <Link href={href} className="news-read-more">
                         Read more
                         <span className="visually-hidden">: {e.title}</span>
                       </Link>
