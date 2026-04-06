@@ -17,12 +17,12 @@ export function HomeLatestUpdates() {
             </p>
           </div>
           <Link href="/newsroom" className="home-section-all-link">
-            View all
+            All news
           </Link>
         </header>
 
         {entries.length === 0 ? (
-          <p className="newsroom-archive-empty">No newsroom entries yet.</p>
+          <p className="newsroom-archive-empty">No news entries yet.</p>
         ) : (
           <ul className="newsroom-archive-list home-elevated-list">
             {entries.map((e) => {

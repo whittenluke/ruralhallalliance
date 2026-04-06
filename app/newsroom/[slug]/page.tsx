@@ -13,7 +13,7 @@ export default function NewsroomDetailPage({ params }: { params: { slug: string 
         <section>
           <p>Entry not found.</p>
           <p>
-            <Link href="/newsroom">Back to Newsroom</Link>
+            <Link href="/newsroom">Back to News</Link>
           </p>
         </section>
       </div>
@@ -25,7 +25,7 @@ export default function NewsroomDetailPage({ params }: { params: { slug: string 
     <div className="container">
       <article className="newsroom-article">
         <p className="newsroom-article-back">
-          <Link href="/newsroom">← Back to Newsroom</Link>
+          <Link href="/newsroom">← Back to News</Link>
         </p>
         <header className="newsroom-article-header">
           <h1 className="page-title">{entry.title}</h1>

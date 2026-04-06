@@ -6,7 +6,6 @@ import { useEffect, useId, useState, type HTMLAttributes } from "react";
 import { primaryNav } from "@/lib/navigation";
 
 function navLinkIsActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 

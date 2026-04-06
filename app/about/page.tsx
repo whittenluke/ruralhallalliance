@@ -13,18 +13,18 @@ export default function AboutPage() {
           <h2 className="about-page-subheading">{page.mission_heading}</h2>
         ) : null}
         {page.mission_body ? (
-          <p className="about-page-block prose">{page.mission_body}</p>
+          <p className="about-page-block">{page.mission_body}</p>
         ) : null}
 
         {page.who_we_serve_heading ? (
           <h2 className="about-page-subheading">{page.who_we_serve_heading}</h2>
         ) : null}
         {page.who_we_serve_body ? (
-          <p className="about-page-block prose">{page.who_we_serve_body}</p>
+          <p className="about-page-block">{page.who_we_serve_body}</p>
         ) : null}
 
         {page.body ? (
-          <p className="about-page-block prose">{page.body}</p>
+          <p className="about-page-block">{page.body}</p>
         ) : null}
       </section>
     </div>

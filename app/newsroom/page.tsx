@@ -6,9 +6,9 @@ export default function NewsroomIndexPage() {
 
   return (
     <div className="container newsroom-page">
-      <section className="newsroom-archive-section" aria-label="Newsroom archive">
+      <section className="newsroom-archive-section" aria-label="News archive">
         <header className="newsroom-archive-header">
-          <h1 className="page-title">Newsroom</h1>
+          <h1 className="page-title">News</h1>
           <p className="page-lede newsroom-archive-lede">
             A public archive of official communications.
           </p>

@@ -18,7 +18,7 @@ const homePath = path.join(process.cwd(), "content", "pages", "home.md");
 const defaults: HomePageContent = {
   hero_title: "Rural Hall Alliance",
   hero_summary: "",
-  hero_primary_cta_label: "View Newsroom",
+  hero_primary_cta_label: "View News",
   hero_primary_cta_link: "/newsroom",
   hero_secondary_cta_label: "Media Inquiries",
   hero_secondary_cta_link: "/media",

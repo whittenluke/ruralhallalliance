@@ -19,7 +19,7 @@ const newsreader = Newsreader({
 });
 
 const defaultDescription =
-  "Official site for Rural Hall Alliance: newsroom, membership, media inquiries, and community resources.";
+  "Official site for Rural Hall Alliance: news, membership, media inquiries, and community resources.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const s = getSiteSettings();
@@ -28,15 +28,6 @@ export async function generateMetadata(): Promise<Metadata> {
     description: s.site_tagline?.trim() ? s.site_tagline : defaultDescription
   };
 }
-
-const headerNav = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/newsroom", label: "Newsroom" },
-  { href: "/membership", label: "Membership" },
-  { href: "/calendar", label: "Calendar" },
-  { href: "/contact", label: "Contact" }
-] as const;
 
 export default async function RootLayout({
   children

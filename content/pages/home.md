@@ -1,7 +1,7 @@
 ---
 hero_title: Public Information for Rural Hall
 hero_summary: A voice for Rural Hall residents and businesses.
-hero_primary_cta_label: View Newsroom
+hero_primary_cta_label: Latest News
 hero_primary_cta_link: /newsroom
 hero_secondary_cta_label: Media Inquiries
 hero_secondary_cta_link: /media
