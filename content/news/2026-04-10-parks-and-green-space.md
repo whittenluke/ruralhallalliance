@@ -1,7 +1,7 @@
 ---
 title: Parks and Green Space - Spring Notice
 slug: parks-spring-notice
-date: 2026-04-09T00:00:00.000-04:00
+date: 2026-04-05T00:00:00.000-04:00
 category: Community Update
 summary: Seasonal maintenance schedules and public hours for local parks. What
   to expect through early summer.
