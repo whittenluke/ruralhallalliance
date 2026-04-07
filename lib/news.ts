@@ -78,7 +78,13 @@ export function getAllNewsEntries(): Array<NewsEntryMeta & { body: string }> {
       body: content.trim()
     };
   });
-  entries.sort((a, b) => (a.date < b.date ? 1 : -1));
+  /** Newest first; tie-break by slug so order is identical on every OS (readdir order is not). */
+  entries.sort((a, b) => {
+    if (a.date !== b.date) {
+      return a.date < b.date ? 1 : -1;
+    }
+    return a.slug.localeCompare(b.slug, "en");
+  });
   return entries;
 }
 
