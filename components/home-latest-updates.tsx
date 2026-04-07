@@ -48,37 +48,45 @@ export function HomeLatestUpdates() {
                         />
                       </Link>
                     ) : null}
-                    <h3 className="news-preview-title">
-                      <Link href={href}>{e.title}</Link>
-                    </h3>
-                    {displayDate || e.category ? (
-                      <p className="news-preview-meta">
-                        {displayDate ? (
-                          <>
-                            <time dateTime={e.date}>{displayDate}</time>
-                            {e.category ? (
-                              <>
-                                <span className="news-preview-meta-sep" aria-hidden>
-                                  ·
-                                </span>
-                                <span className="news-preview-category">{e.category}</span>
-                              </>
-                            ) : null}
-                          </>
-                        ) : (
-                          <span className="news-preview-category">{e.category}</span>
-                        )}
+                    <div
+                      className={
+                        e.featured_image
+                          ? "news-preview-content news-preview-content--beside-thumb"
+                          : "news-preview-content"
+                      }
+                    >
+                      <h3 className="news-preview-title">
+                        <Link href={href}>{e.title}</Link>
+                      </h3>
+                      {displayDate || e.category ? (
+                        <p className="news-preview-meta">
+                          {displayDate ? (
+                            <>
+                              <time dateTime={e.date}>{displayDate}</time>
+                              {e.category ? (
+                                <>
+                                  <span className="news-preview-meta-sep" aria-hidden>
+                                    ·
+                                  </span>
+                                  <span className="news-preview-category">{e.category}</span>
+                                </>
+                              ) : null}
+                            </>
+                          ) : (
+                            <span className="news-preview-category">{e.category}</span>
+                          )}
+                        </p>
+                      ) : null}
+                      {e.summary ? (
+                        <p className="news-preview-summary">{e.summary}</p>
+                      ) : null}
+                      <p className="news-preview-cta">
+                        <Link href={href} className="news-read-more">
+                          Read more
+                          <span className="visually-hidden">: {e.title}</span>
+                        </Link>
                       </p>
-                    ) : null}
-                    {e.summary ? (
-                      <p className="news-preview-summary">{e.summary}</p>
-                    ) : null}
-                    <p className="news-preview-cta">
-                      <Link href={href} className="news-read-more">
-                        Read more
-                        <span className="visually-hidden">: {e.title}</span>
-                      </Link>
-                    </p>
+                    </div>
                   </article>
                 </li>
               );
