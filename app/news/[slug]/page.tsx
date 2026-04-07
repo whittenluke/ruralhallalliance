@@ -1,4 +1,9 @@
-import { formatNewsDisplayDate, getAllNewsEntries, getNewsEntryBySlug } from "@/lib/news";
+import {
+  formatNewsDisplayDate,
+  getAllNewsEntries,
+  getNewsEntryBySlug,
+  normalizePublicAssetPath
+} from "@/lib/news";
 import Link from "next/link";
 
 export default function NewsDetailPage({ params }: { params: { slug: string } }) {
@@ -43,6 +48,16 @@ export default function NewsDetailPage({ params }: { params: { slug: string } })
             )}
           </p>
         </header>
+        {entry.featured_image ? (
+          <figure className="news-article-featured">
+            <img
+              src={normalizePublicAssetPath(entry.featured_image)}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        ) : null}
         <div className="news-article-body prose">
           {entry.summary ? <p className="news-article-deck">{entry.summary}</p> : null}
           <div className="news-article-text">{entry.body.trim()}</div>

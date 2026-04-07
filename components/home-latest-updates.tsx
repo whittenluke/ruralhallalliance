@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { formatNewsDisplayDate, getLatestNewsEntries } from "@/lib/news";
+import {
+  formatNewsDisplayDate,
+  getLatestNewsEntries,
+  normalizePublicAssetPath
+} from "@/lib/news";
 
 export function HomeLatestUpdates() {
   const entries = getLatestNewsEntries(3);
@@ -30,7 +34,20 @@ export function HomeLatestUpdates() {
               const displayDate = formatNewsDisplayDate(e.date);
               return (
                 <li key={e.slug} className="news-archive-row">
-                  <article className="news-preview">
+                  <article
+                    className={`news-preview${e.featured_image ? " news-preview--has-thumb" : ""}`}
+                  >
+                    {e.featured_image ? (
+                      <Link href={href} className="news-preview-thumb-link" tabIndex={-1} aria-hidden>
+                        <img
+                          src={normalizePublicAssetPath(e.featured_image)}
+                          alt=""
+                          className="news-preview-thumb"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </Link>
+                    ) : null}
                     <h3 className="news-preview-title">
                       <Link href={href}>{e.title}</Link>
                     </h3>

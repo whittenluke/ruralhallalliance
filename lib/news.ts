@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 
 export interface NewsEntryMeta {
   title: string;
@@ -7,25 +8,18 @@ export interface NewsEntryMeta {
   date: string;
   category: string;
   summary: string;
+  /** Public URL path from Decap `public_folder`, e.g. `/uploads/photo.webp` */
+  featured_image?: string;
 }
 
 const newsDir = path.join(process.cwd(), "content", "news");
 
-function parseFrontmatter(fileContent: string): { data: Record<string, any>; body: string } {
-  if (!fileContent.startsWith("---")) return { data: {}, body: fileContent };
-  const end = fileContent.indexOf("---", 3);
-  const head = fileContent.slice(3, end).trim();
-  const body = fileContent.slice(end + 3).trim();
-  const data: Record<string, any> = {};
-  head.split("\n").forEach((line) => {
-    const idx = line.indexOf(":");
-    if (idx > -1) {
-      const key = line.slice(0, idx).trim();
-      const val = line.slice(idx + 1).trim();
-      data[key] = val.replace(/^"|"$/g, "");
-    }
-  });
-  return { data, body };
+/** Ensures paths from CMS resolve under `public/`. */
+export function normalizePublicAssetPath(urlOrPath: string): string {
+  const s = urlOrPath.trim();
+  if (!s) return "";
+  if (s.startsWith("http://") || s.startsWith("https://")) return s;
+  return s.startsWith("/") ? s : `/${s}`;
 }
 
 export function getAllNewsEntries(): Array<NewsEntryMeta & { body: string }> {
@@ -34,15 +28,24 @@ export function getAllNewsEntries(): Array<NewsEntryMeta & { body: string }> {
   }
   const files = fs.readdirSync(newsDir).filter((f) => f.endsWith(".md"));
   const entries = files.map((filename) => {
-    const content = fs.readFileSync(path.join(newsDir, filename), "utf8");
-    const { data, body } = parseFrontmatter(content);
+    const raw = fs.readFileSync(path.join(newsDir, filename), "utf8");
+    const { data, content } = matter(raw);
+    const d = data as Record<string, unknown>;
+    const str = (k: string) => (d[k] == null ? "" : String(d[k]).trim());
+    const opt = (k: string) => {
+      const v = d[k];
+      if (v == null) return undefined;
+      const s = String(v).trim();
+      return s || undefined;
+    };
     return {
-      title: String(data.title || ""),
-      slug: String(data.slug || path.basename(filename, ".md")),
-      date: String(data.date || ""),
-      category: String(data.category || ""),
-      summary: String(data.summary || ""),
-      body
+      title: str("title"),
+      slug: str("slug") || path.basename(filename, ".md"),
+      date: str("date"),
+      category: str("category"),
+      summary: str("summary"),
+      featured_image: opt("featured_image"),
+      body: content.trim()
     };
   });
   entries.sort((a, b) => (a.date < b.date ? 1 : -1));
