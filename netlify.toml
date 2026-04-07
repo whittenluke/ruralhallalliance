@@ -20,3 +20,14 @@
   to = "/admin/"
   status = 301
 
+# Legacy paths (newsroom → news); mirrors next.config.js redirects
+[[redirects]]
+  from = "/newsroom"
+  to = "/news"
+  status = 301
+
+[[redirects]]
+  from = "/newsroom/*"
+  to = "/news/:splat"
+  status = 301
+

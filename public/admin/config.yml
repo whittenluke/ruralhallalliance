@@ -81,15 +81,26 @@ collections:
 
   - name: "news"
     label: "News"
+    label_singular: "news article"
     folder: "content/news"
+    extension: "md"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - {
+          label: "Slug",
+          name: "slug",
+          widget: "string",
+          hint: "URL segment only; filename is built from date + slug (e.g. parks-spring-notice → 2026-04-10-parks-spring-notice.md)"
+        }
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        time_format: false
       - { label: "Category", name: "category", widget: "select", options: ["Press Release", "Statement", "Statement of Concern", "Community Update", "Announcement"] }
-      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
 
