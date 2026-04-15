@@ -82,7 +82,7 @@ collections:
 
   - name: "news"
     label: "News"
-    label_singular: "news article"
+    label_singular: "News Article"
     folder: "content/news"
     extension: "md"
     create: true
