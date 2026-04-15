@@ -2,6 +2,7 @@ backend:
   name: github
   repo: whittenluke/ruralhallalliance
   branch: main
+  site_domain: ruralhallalliance.netlify.app
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
