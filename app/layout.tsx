@@ -25,7 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
   const s = getSiteSettings();
   return {
     title: s.site_title,
-    description: s.site_tagline?.trim() ? s.site_tagline : defaultDescription
+    description: s.site_tagline?.trim() ? s.site_tagline : defaultDescription,
+    manifest: "/favicons/site.webmanifest",
+    icons: {
+      icon: [
+        { url: "/favicons/favicon.ico" },
+        { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" }
+      ],
+      apple: [{ url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }]
+    }
   };
 }
 
