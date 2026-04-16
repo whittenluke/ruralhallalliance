@@ -1,6 +1,6 @@
 ---
 hero_title: Public Information for Rural Hall
-hero_summary: A voice for Rural Hall.
+hero_summary: A voice for the community.
 hero_primary_cta_label: Latest News
 hero_primary_cta_link: /news
 hero_secondary_cta_label: Calendar
