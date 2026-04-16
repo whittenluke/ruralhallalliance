@@ -723,6 +723,18 @@ p {
   color: rgba(255, 255, 255, 0.95);
 }
 
+.home-section--brand.home-section {
+  padding-top: calc(var(--section-gap-mobile) - 0.65rem);
+  padding-bottom: calc(var(--section-gap-mobile) - 0.65rem);
+}
+
+@media (min-width: 768px) {
+  .home-section--brand.home-section {
+    padding-top: calc(var(--section-gap-desktop) - 1rem);
+    padding-bottom: calc(var(--section-gap-desktop) - 1rem);
+  }
+}
+
 .home-section-inner {
   max-width: 42rem;
 }
