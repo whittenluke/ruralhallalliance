@@ -66,7 +66,14 @@ export function NetlifyForm({ name, formName, children }: NetlifyFormProps) {
   return (
     <NetlifyFormContext.Provider value={{ isSubmitting }}>
       <div className="netlify-form-wrap">
-        <form name={name} onSubmit={handleSubmit}>
+        <form
+          name={name}
+          method="POST"
+          action="/"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
+        >
           <input type="hidden" name="form-name" value={formName} />
           {children}
         </form>
