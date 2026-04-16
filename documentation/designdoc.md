@@ -270,27 +270,46 @@ Corporate-startup styled
 Over-designed
 Generic
 8.2 Color System
-Primary Brand Color
-#135543
-Secondary Structural Color
-#16324F
-Primary Background
-#F7F4EE
-Content Surface
+
+Anchor and full palette (whiter, green-forward; no separate structural navy token):
+
+Primary green
+#13563F
+Use for: hero primary buttons, Get Involved section background, footer, logo treatments, and other primary brand surfaces.
+
+Warm off-white
+#F7F5F0
+Use for: alternating content band backgrounds (with pure white bands) for gentle rhythm without heavy color blocks.
+
+Pure white
 #FFFFFF
-Primary Text
-#1F2933
-Borders / Dividers
-#D7E2DD
-Alternate Section Background
-#EAF1EE
+Use for: navigation bar, hero areas, cards, and alternating content bands paired with the warm off-white.
+
+Near-black
+#1A1A1A
+Use for: all body copy and headings unless a specific exception is defined (e.g. white text on green backgrounds).
+
+Darkened green (interaction)
+#0D3D2C
+Use for: hover states on green buttons and on links that are styled green only. Do not use as a default fill for large areas.
+
+Lightened green (accent)
+#2E7D57
+Use for: “Read more” links, category tags, and subtle accents in content areas (not for primary buttons or large fields of color).
+
 8.3 Color Usage Rules
-Green is the primary brand color.
-Navy is the structural support color.
-The site should remain mostly light and neutral.
-Green and navy should not be used in equal proportion.
-Buttons and calls to action should favor green.
-Navy should be used primarily in header, footer, and select structural elements.
+
+The site should remain mostly white and warm off-white; green carries identity and action, not full-page wash except where specified (hero, Get Involved, footer).
+
+Primary green (#13563F) is the main brand color. Pair it with white text on filled buttons and dark sections as needed.
+
+Use #F7F5F0 and #FFFFFF to alternate section backgrounds; avoid introducing additional mid-tone grays unless required for borders or disabled states.
+
+Body text and headings use #1A1A1A for maximum readability on light surfaces.
+
+Reserve #0D3D2C for hover feedback on interactive green elements only.
+
+Reserve #2E7D57 for secondary emphasis in content (links, tags, small accents), not for primary CTAs.
 8.4 Typography
 Font Pairing
 Headings: Newsreader
@@ -316,20 +335,20 @@ Consistent spacing must be used across all sections
 8.6 Buttons and Inputs
 Buttons
 Border radius: 8px
-Primary button: green background, white text
-Secondary button: white or off-white background, green border, green text
-Hover states should be subtle and restrained
+Primary button: primary green (#13563F) background, white text; hover uses darkened green (#0D3D2C) where appropriate
+Secondary button: white or warm off-white background, primary green border and label text; hover states stay restrained
+Hover states should be subtle and restrained; green buttons and green-styled links use #0D3D2C on hover per the palette
 Button text should be short and direct
 Inputs
 White background
-1px border using border color
-Clear focus state using green
+1px border using a subtle neutral that does not compete with the whiter page (implementation may use a very light warm gray)
+Clear focus state using primary green
 Comfortable vertical padding
 Labels visible above fields
 8.7 Cards and Surfaces
 Use simple bordered surfaces instead of heavy cards.
 Avoid large shadows.
-Use white surfaces on the warm off-white page background.
+Use white surfaces on the warm off-white (#F7F5F0) band backgrounds where alternating layout calls for contrast.
 Newsroom items may be displayed as simple cards or bordered list rows.
 Forms should sit inside clean white containers.
 8.8 Photography Direction

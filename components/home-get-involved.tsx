@@ -8,7 +8,7 @@ const links = [
 
 export function HomeGetInvolved() {
   return (
-    <section className="home-section home-section--navy" aria-labelledby="home-involve-heading">
+    <section className="home-section home-section--brand" aria-labelledby="home-involve-heading">
       <div className="container home-involve-inner">
         <header className="home-involve-header">
           <h2 id="home-involve-heading" className="home-involve-title">

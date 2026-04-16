@@ -39,7 +39,7 @@ export default function NewsDetailPage({ params }: { params: { slug: string } })
                     <span className="news-preview-meta-sep" aria-hidden>
                       ·
                     </span>
-                    <span>{entry.category}</span>
+                    <span className="news-preview-category">{entry.category}</span>
                   </>
                 ) : null}
               </>

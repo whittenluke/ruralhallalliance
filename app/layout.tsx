@@ -55,7 +55,7 @@ export default async function RootLayout({
               <Link className="footer-brand" href="/">
                 <img
                   className="footer-logo"
-                  src="/rural-hall-alliance-logo-light.png"
+                  src="/rural-hall-alliance-logo-dark.png"
                   alt={settings.site_title}
                 />
               </Link>

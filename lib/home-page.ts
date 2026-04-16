@@ -20,8 +20,8 @@ const defaults: HomePageContent = {
   hero_summary: "",
   hero_primary_cta_label: "View News",
   hero_primary_cta_link: "/news",
-  hero_secondary_cta_label: "Media Inquiries",
-  hero_secondary_cta_link: "/media",
+  hero_secondary_cta_label: "Calendar",
+  hero_secondary_cta_link: "/calendar",
   hero_image: "",
   intro_heading: "",
   intro_body: ""

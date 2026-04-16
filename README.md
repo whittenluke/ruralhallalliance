@@ -18,7 +18,7 @@ Getting started:
 3. Open http://localhost:3000
 
 Notes:
-- Styling tokens are seeded from the design doc’s palette.
+- Styling tokens in `app/globals.css` match the palette in `documentation/designdoc.md` (primary green, warm off-white, accent, hover green).
 - Additional routes and CMS setup will be added in subsequent steps.
 
 Deployment:
