@@ -28,11 +28,14 @@ export default function HomePage() {
               <p className="home-hero-summary">{home.hero_summary}</p>
             ) : null}
             <div className="home-hero-actions">
-              <a className="btn btn-primary btn-lg" href={home.hero_primary_cta_link}>
+              <a
+                className="btn btn-secondary btn-lg home-hero-btn-news"
+                href={home.hero_primary_cta_link}
+              >
                 {home.hero_primary_cta_label}
               </a>
               <a
-                className="btn btn-secondary btn-lg home-hero-btn-secondary"
+                className="btn btn-primary btn-lg home-hero-btn-calendar"
                 href={home.hero_secondary_cta_link}
               >
                 {home.hero_secondary_cta_label}

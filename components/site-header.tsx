@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState, type HTMLAttributes } from "react";
+import { useEffect, useId, useState } from "react";
 import { primaryNav } from "@/lib/navigation";
 
 function navLinkIsActive(pathname: string, href: string) {
@@ -21,10 +21,36 @@ export function SiteHeader({ siteTitle }: SiteHeaderProps) {
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 899px)");
+    let debounceId: ReturnType<typeof setTimeout> | undefined;
+    const lockMs = 200;
+
+    const clearDrawerResizeLockLater = () => {
+      document.documentElement.classList.add("site-header-drawer-resize-lock");
+      if (debounceId !== undefined) clearTimeout(debounceId);
+      debounceId = window.setTimeout(() => {
+        document.documentElement.classList.remove("site-header-drawer-resize-lock");
+        debounceId = undefined;
+      }, lockMs);
+    };
+
     const sync = () => setIsMobileNav(mq.matches);
     sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+
+    const onMqChange = () => {
+      setIsMobileNav(mq.matches);
+      clearDrawerResizeLockLater();
+    };
+
+    const onResize = () => clearDrawerResizeLockLater();
+
+    mq.addEventListener("change", onMqChange);
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      mq.removeEventListener("change", onMqChange);
+      window.removeEventListener("resize", onResize);
+      if (debounceId !== undefined) clearTimeout(debounceId);
+      document.documentElement.classList.remove("site-header-drawer-resize-lock");
+    };
   }, []);
 
   useEffect(() => {
@@ -86,7 +112,6 @@ export function SiteHeader({ siteTitle }: SiteHeaderProps) {
         <div
           id={panelId}
           className={`site-header-panel${open ? " site-header-panel--open" : ""}`}
-          // inert: keep focus out of the drawer when closed on small screens
           {...(inertDrawer ? { inert: true } : {})}
         >
           <nav className="site-header-nav" aria-label="Primary">
