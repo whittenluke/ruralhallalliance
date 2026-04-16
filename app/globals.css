@@ -383,7 +383,6 @@ p {
 }
 
 .site-footer {
-  border-top: 1px solid var(--color-green-hover);
   margin-top: 0;
   padding: 1.25rem 0 1.5rem;
   background: var(--color-green);
