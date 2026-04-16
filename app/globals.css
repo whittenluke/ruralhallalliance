@@ -516,6 +516,13 @@ p {
   background-repeat: no-repeat;
 }
 
+/* Small phones in portrait: bias crop to the left side of the image */
+@media (max-width: 640px) and (orientation: portrait) {
+  .home-hero--image {
+    background-position: center;
+  }
+}
+
 .home-hero-overlay {
   position: absolute;
   inset: 0;
