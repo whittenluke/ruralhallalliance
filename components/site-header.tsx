@@ -21,7 +21,7 @@ export function SiteHeader({ siteTitle }: SiteHeaderProps) {
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 899px)");
-    let debounceId: ReturnType<typeof setTimeout> | undefined;
+    let debounceId: number | undefined;
     const lockMs = 200;
 
     const clearDrawerResizeLockLater = () => {
