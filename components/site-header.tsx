@@ -55,7 +55,7 @@ export function SiteHeader({ siteTitle }: SiteHeaderProps) {
     <header className="site-header">
       <div className="container site-header-inner">
         <Link className="brand" href="/" aria-label={siteTitle}>
-          <img src="/rural-hall-alliance-logo-dark.png" alt={siteTitle} />
+          <img src="/rural-hall-alliance-logo-light.png" alt={siteTitle} />
         </Link>
 
         <button

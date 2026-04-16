@@ -17,7 +17,10 @@ export default function HomePage() {
             : undefined
         }
       >
-        <div className="home-hero-overlay" aria-hidden="true" />
+        <div
+          className={`home-hero-overlay${hasHeroImage ? " home-hero-overlay--image" : ""}`}
+          aria-hidden="true"
+        />
         <div className="container home-hero-inner">
           <div className="home-hero-copy">
             <h1 className="home-hero-title">{home.hero_title}</h1>

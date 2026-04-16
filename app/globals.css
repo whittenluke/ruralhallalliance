@@ -101,9 +101,9 @@ p {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--color-navy);
-  color: #fff;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 1px 0 var(--color-border), 0 2px 12px rgba(22, 50, 79, 0.06);
 }
 
 .site-header-inner {
@@ -116,13 +116,19 @@ p {
 }
 
 .site-header .brand {
-  color: #fff;
+  color: var(--color-green);
   font-weight: 700;
   text-decoration: none;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   line-height: 0;
+}
+
+.site-header .brand:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .site-header .brand img {
@@ -147,20 +153,21 @@ p {
   height: 2.75rem;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(19, 85, 67, 0.35);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: rgba(234, 241, 238, 0.65);
+  color: var(--color-green);
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .site-header-menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: var(--color-alt);
+  border-color: rgba(19, 85, 67, 0.5);
 }
 
 .site-header-menu-toggle:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--color-green);
   outline-offset: 3px;
 }
 
@@ -223,7 +230,7 @@ p {
 }
 
 .site-header-nav a {
-  color: #fff;
+  color: var(--color-green);
   text-decoration: none;
   white-space: nowrap;
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -232,11 +239,12 @@ p {
 }
 
 .site-header-nav a:hover {
+  color: var(--color-navy);
   text-decoration: underline;
 }
 
 .site-header-nav a:focus-visible {
-  outline: 2px solid #fff;
+  outline: 2px solid var(--color-green);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -249,6 +257,17 @@ p {
 
 .site-header-cta {
   flex-shrink: 0;
+}
+
+/* Match hero primary: one navy filled CTA, not a second green primary */
+.site-header .site-header-cta.btn-primary {
+  background: var(--color-navy);
+  color: #fff;
+  border-color: var(--color-navy);
+}
+
+.site-header .site-header-cta.btn-primary:hover {
+  filter: brightness(1.07);
 }
 
 @media (max-width: 899px) {
@@ -270,8 +289,9 @@ p {
     gap: 0;
     margin: 0;
     padding: max(4.25rem, calc(env(safe-area-inset-top) + 3.5rem)) 1.25rem 1.5rem;
-    background: var(--color-navy);
-    box-shadow: -12px 0 32px rgba(0, 0, 0, 0.25);
+    background: var(--color-surface);
+    box-shadow: -12px 0 32px rgba(22, 50, 79, 0.12);
+    border-left: 1px solid var(--color-border);
     transform: translateX(100%);
     visibility: hidden;
     transition: transform 0.22s ease, visibility 0.22s;
@@ -288,7 +308,7 @@ p {
     flex-wrap: nowrap;
     align-items: stretch;
     gap: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid var(--color-border);
   }
 
   .site-header-nav a {
@@ -297,7 +317,7 @@ p {
     min-height: 2.75rem;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid var(--color-border);
     font-size: 1.0625rem;
   }
 
@@ -353,7 +373,7 @@ p {
 }
 
 .site-header .btn-primary:focus-visible {
-  outline-color: #fff;
+  outline-color: var(--color-green);
 }
 
 .site-footer {
@@ -479,13 +499,7 @@ p {
   min-height: min(88vh, 52rem);
   display: flex;
   align-items: center;
-  background-color: var(--color-navy);
-  background-image: linear-gradient(
-    120deg,
-    var(--color-navy) 0%,
-    #1a3d5c 42%,
-    rgba(19, 85, 67, 0.55) 100%
-  );
+  background-color: var(--color-green);
   background-size: cover;
   background-position: center;
 }
@@ -499,13 +513,17 @@ p {
 .home-hero-overlay {
   position: absolute;
   inset: 0;
+  pointer-events: none;
+}
+
+/* Green-only scrim when hero uses a photo (default hero stays flat solid green) */
+.home-hero-overlay--image {
   background: linear-gradient(
     105deg,
-    rgba(22, 50, 79, 0.88) 0%,
-    rgba(22, 50, 79, 0.55) 48%,
-    rgba(19, 85, 67, 0.35) 100%
+    rgba(12, 52, 41, 0.55) 0%,
+    rgba(19, 85, 67, 0.28) 52%,
+    rgba(19, 85, 67, 0.08) 100%
   );
-  pointer-events: none;
 }
 
 .home-hero-inner {
@@ -561,6 +579,20 @@ p {
 .home-hero .home-hero-btn-secondary:hover {
   background: #fff;
   filter: none;
+}
+
+.home-hero .btn-primary {
+  background: var(--color-navy);
+  color: #fff;
+  border-color: var(--color-navy);
+}
+
+.home-hero .btn-primary:hover {
+  filter: brightness(1.07);
+}
+
+.home-hero .btn-primary:focus-visible {
+  outline-color: #fff;
 }
 
 /* Wider than hero copy (~58ch); uses horizontal page padding, not .container width cap */
