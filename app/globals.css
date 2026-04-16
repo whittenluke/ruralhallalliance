@@ -513,7 +513,7 @@ p {
 
 .home-hero--image {
   background-size: cover;
-  background-position: center;
+  background-position: right center;
   background-repeat: no-repeat;
 }
 
@@ -525,12 +525,7 @@ p {
 
 /* Green-only scrim when hero uses a photo (default hero stays flat solid green) */
 .home-hero-overlay--image {
-  background: linear-gradient(
-    105deg,
-    rgba(10, 48, 36, 0.55) 0%,
-    rgba(19, 86, 63, 0.28) 52%,
-    rgba(19, 86, 63, 0.08) 100%
-  );
+  background: rgba(0, 0, 0, 0.45);
 }
 
 .home-hero-inner {
