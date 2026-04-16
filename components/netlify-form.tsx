@@ -45,7 +45,7 @@ export function NetlifyForm({ name, formName, children }: NetlifyFormProps) {
     setErrorMessage(null);
     try {
       const body = formDataToUrlEncoded(form);
-      const res = await fetch("/", {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body
@@ -69,7 +69,7 @@ export function NetlifyForm({ name, formName, children }: NetlifyFormProps) {
         <form
           name={name}
           method="POST"
-          action="/"
+          action="/__forms.html"
           data-netlify="true"
           netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
