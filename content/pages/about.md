@@ -2,10 +2,10 @@
 title: About Rural Hall Alliance
 summary: >+
   Rural Hall Alliance is a non‑partisan nonprofit association representing
-  member residents and businesses committed to advancing the well‑being of the
-  Rural Hall community. We support local initiatives and foster transparent,
-  collaborative, community‑driven solutions that strengthen connections and
-  promote a thriving, healthy community.
+  residents and businesses committed to advancing the well‑being of the Rural
+  Hall community. We support local member initiatives and foster collaborative,
+  community‑driven solutions that strengthen connections and promote a thriving,
+  healthy community.
 
 mission_heading: Our Mission
 mission_body: >
