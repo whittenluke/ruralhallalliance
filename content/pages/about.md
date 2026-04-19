@@ -10,6 +10,6 @@ mission_heading: Our Mission
 mission_body: To advance Rural Hall by turning shared ideas into member-driven
   action that strengthens connections and enhances community well-being.”
 who_we_serve_heading: Who We Serve
-who_we_serve_body: Association members consisting of residents, business owners,
-  and other stakeholders of the Rural Hall community.
+who_we_serve_body: The members of the Rural Hall Alliance consisting of
+  residents, business owners, and other stakeholders of the local community.
 ---
