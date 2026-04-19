@@ -1,5 +1,5 @@
 ---
-hero_title: Rural Hall, North Carolina
+hero_title: Rural Hall, NC
 hero_summary: Forsyth County
 hero_primary_cta_label: Latest News
 hero_primary_cta_link: /news
