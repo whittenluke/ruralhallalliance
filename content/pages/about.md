@@ -7,8 +7,12 @@ summary: >-
 
   We serve as a collaborative forum where relationships are built, perspectives are exchanged, and local initiatives take shape. Through open dialogue, we connect members with information, resources, and one another. We believe a strong, connected community is built through participation, trust, and shared understanding.
 mission_heading: Our Mission
-mission_body: To advance Rural Hall by turning shared ideas into member-driven
-  action that strengthens connections and enhances community well-being.”
+mission_body: >-
+  To advance Rural Hall by turning shared ideas into member-driven action that
+  strengthens connections and enhances community well-being.”
+
+
+  ![](/uploads/covington-memorial-park.webp)
 who_we_serve_heading: Who We Serve
 who_we_serve_body: The members of the Rural Hall Alliance consisting of
   residents, business owners, and other stakeholders of the local community.
