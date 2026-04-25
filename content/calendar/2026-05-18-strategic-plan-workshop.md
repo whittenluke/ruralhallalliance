@@ -6,5 +6,5 @@ time: ""
 location: ""
 address: ""
 external_link: null
-summary: Rezoning Request for over 100 Acre parcel in Rural Hall, NC
+summary: Rezoning Request for ~130 Acre parcel in Rural Hall, NC
 ---
