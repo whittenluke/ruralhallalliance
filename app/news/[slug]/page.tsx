@@ -61,7 +61,6 @@ export default function NewsDetailPage({ params }: { params: { slug: string } })
           </figure>
         ) : null}
         <div className="news-article-body prose">
-          {entry.summary ? <p className="news-article-deck">{entry.summary}</p> : null}
           {entry.body.trim() ? (
             <div className="news-article-text news-article-text--markdown">
               <ReactMarkdown>{reflowMarkdownBodyForNews(entry.body)}</ReactMarkdown>
