@@ -31,7 +31,6 @@ export default function MembershipPage() {
             <select name="relationship_to_community" defaultValue="Resident">
               <option value="Resident">Resident</option>
               <option value="Business Owner">Business Owner</option>
-              <option value="Supporter">Supporter</option>
               <option value="Other">Other</option>
             </select>
           </label>

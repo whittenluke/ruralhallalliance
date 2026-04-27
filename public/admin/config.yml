@@ -79,6 +79,12 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Summary", name: "summary", widget: "text", required: false }
+      - file: "content/pages/news-page.md"
+        label: "News Page"
+        name: "news_page"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
 
   - name: "news"
     label: "News"

@@ -38,6 +38,18 @@ export function getCalendarPageContent(): PageTitleSummary {
   };
 }
 
+export function getNewsPageContent(): PageTitleSummary {
+  const defaults: PageTitleSummary = {
+    title: "News",
+    summary: "A public archive of official communications."
+  };
+  const { data } = readPage("news-page");
+  return {
+    title: pickString(data, "title") || defaults.title,
+    summary: pickString(data, "summary") || defaults.summary
+  };
+}
+
 export function getMembershipPageContent(): PageTitleSummary {
   const defaults: PageTitleSummary = {
     title: "Membership",

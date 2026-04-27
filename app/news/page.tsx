@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getNewsPageContent } from "@/lib/content-pages";
 import {
   formatNewsDisplayDate,
   getAllNewsEntries,
@@ -6,16 +7,17 @@ import {
 } from "@/lib/news";
 
 export default function NewsIndexPage() {
+  const page = getNewsPageContent();
   const entries = getAllNewsEntries();
 
   return (
     <div className="container news-page">
       <section className="news-archive-section" aria-label="News archive">
         <header className="news-archive-header">
-          <h1 className="page-title">News</h1>
-          <p className="page-lede news-archive-lede">
-            A public archive of official communications.
-          </p>
+          <h1 className="page-title">{page.title}</h1>
+          {page.summary ? (
+            <p className="page-lede news-archive-lede">{page.summary}</p>
+          ) : null}
         </header>
 
         {entries.length === 0 ? (

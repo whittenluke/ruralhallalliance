@@ -37,10 +37,6 @@ export default function MediaPage() {
             <input type="tel" name="phone_number" />
           </label>
           <label>
-            Deadline
-            <input type="text" name="deadline" />
-          </label>
-          <label>
             Topic
             <input type="text" name="topic" />
           </label>
