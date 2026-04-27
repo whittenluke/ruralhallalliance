@@ -5,6 +5,7 @@ import {
   normalizePublicAssetPath
 } from "@/lib/news";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
 
 export default function NewsDetailPage({ params }: { params: { slug: string } }) {
   const entry = getNewsEntryBySlug(params.slug);
@@ -60,7 +61,11 @@ export default function NewsDetailPage({ params }: { params: { slug: string } })
         ) : null}
         <div className="news-article-body prose">
           {entry.summary ? <p className="news-article-deck">{entry.summary}</p> : null}
-          <div className="news-article-text">{entry.body.trim()}</div>
+          {entry.body.trim() ? (
+            <div className="news-article-text news-article-text--markdown">
+              <ReactMarkdown>{entry.body.trim()}</ReactMarkdown>
+            </div>
+          ) : null}
         </div>
       </article>
     </div>

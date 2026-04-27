@@ -106,6 +106,8 @@ collections:
     extension: "md"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -122,7 +124,12 @@ collections:
       - { label: "Category", name: "category", widget: "select", options: ["Press Release", "Statement", "Statement of Concern", "Community Update", "Announcement"] }
       - { label: "Summary", name: "summary", widget: "text", required: false }
       - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Body",
+          name: "body",
+          widget: "markdown",
+          hint: "Markdown: paragraphs, headings, lists, links. For pasted web text, use “Paste and match style” (or paste into a plain editor first) to avoid odd line breaks. Live preview uses admin styles; the public site matches closely after publish."
+        }
 
   - name: "calendar"
     label: "Calendar"
