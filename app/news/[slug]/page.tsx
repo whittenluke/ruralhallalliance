@@ -6,6 +6,7 @@ import {
 } from "@/lib/news";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { reflowMarkdownBodyForNews } from "@/lib/reflow-markdown-body";
 
 export default function NewsDetailPage({ params }: { params: { slug: string } }) {
   const entry = getNewsEntryBySlug(params.slug);
@@ -63,7 +64,7 @@ export default function NewsDetailPage({ params }: { params: { slug: string } })
           {entry.summary ? <p className="news-article-deck">{entry.summary}</p> : null}
           {entry.body.trim() ? (
             <div className="news-article-text news-article-text--markdown">
-              <ReactMarkdown>{entry.body.trim()}</ReactMarkdown>
+              <ReactMarkdown>{reflowMarkdownBodyForNews(entry.body)}</ReactMarkdown>
             </div>
           ) : null}
         </div>

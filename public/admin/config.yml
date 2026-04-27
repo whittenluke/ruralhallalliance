@@ -128,7 +128,7 @@ collections:
           label: "Body",
           name: "body",
           widget: "markdown",
-          hint: "Markdown: paragraphs, headings, lists, links. For pasted web text, use “Paste and match style” (or paste into a plain editor first) to avoid odd line breaks. Live preview uses admin styles; the public site matches closely after publish."
+          hint: "Markdown: paragraphs, headings, lists, links. The live site reflows pasted book or web text into full-width paragraphs. The editor preview may still look choppy until save—check the published article to confirm."
         }
 
   - name: "calendar"
