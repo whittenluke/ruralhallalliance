@@ -3,7 +3,7 @@ title: TEST CALENDAR ENTRY
 slug: test-calendar-entry
 date: 04/29/2026
 summary: >-
-  “Well, Prince, so Genoa and Lucca are now just family estates of the
+  Well, Prince, so Genoa and Lucca are now just family estates of the
   Buonapartes. But I warn you, if you don’t tell me that this means war, if you
   still try to defend the infamies and horrors perpetrated by that Antichrist—I
   really believe he is Antichrist—I will have nothing more to do with you and
