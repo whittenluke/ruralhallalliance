@@ -1,4 +1,4 @@
 ---
 title: Calendar
-summary: Meetings and local events.
+summary: Meetings and Events
 ---
