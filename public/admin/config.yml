@@ -53,6 +53,19 @@ collections:
           - { label: "Who We Serve Heading", name: "who_we_serve_heading", widget: "string", required: false }
           - { label: "Who We Serve Body", name: "who_we_serve_body", widget: "markdown", required: false }
           - { label: "Body", name: "body", widget: "markdown", required: false }
+      - file: "content/pages/governance.md"
+        label: "Governance"
+        name: "governance"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Summary", name: "summary", widget: "text", required: false }
+          - {
+              label: "Body",
+              name: "body",
+              widget: "markdown",
+              required: false,
+              hint: "Main page copy — e.g. Board of Directors overview, roles, and how to reach the board."
+            }
       - file: "content/pages/media.md"
         label: "Media"
         name: "media"

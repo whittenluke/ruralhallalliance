@@ -81,6 +81,25 @@ export function getContactPageContent(): ContactPageContent {
   };
 }
 
+export interface GovernancePageContent extends PageTitleSummary {
+  body: string;
+}
+
+export function getGovernancePageContent(): GovernancePageContent {
+  const defaults: GovernancePageContent = {
+    title: "Governance",
+    summary:
+      "Rural Hall Alliance is governed by a three-person Board of Directors.",
+    body: ""
+  };
+  const { data } = readPage("governance");
+  return {
+    title: pickString(data, "title") || defaults.title,
+    summary: pickString(data, "summary") || defaults.summary,
+    body: pickString(data, "body") || defaults.body
+  };
+}
+
 export interface AboutPageContent {
   title: string;
   summary: string;
