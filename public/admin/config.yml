@@ -164,8 +164,8 @@ collections:
           label: "Body",
           name: "body",
           widget: "markdown",
-          modes: ["rich_text", "raw"],
-          hint: "Rich text is enabled. If pasted text looks odd, switch to Raw mode or paste as plain text (Cmd+Shift+V). The live site keeps your paragraph breaks and lightly reflows hard-wrapped lines."
+          modes: ["raw", "rich_text"],
+          hint: "Raw is the default and safest for paste. If using Rich Text, paste as plain text (Cmd+Shift+V) to avoid merged words. The live site keeps your paragraph breaks and lightly reflows hard-wrapped lines."
         }
 
   - name: "calendar"
