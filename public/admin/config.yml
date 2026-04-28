@@ -164,7 +164,8 @@ collections:
           label: "Body",
           name: "body",
           widget: "markdown",
-          hint: "Markdown: paragraphs, headings, lists, links. The live site reflows pasted book or web text into full-width paragraphs. The editor preview may still look choppy until save—check the published article to confirm."
+          modes: ["raw"],
+          hint: "Markdown: paragraphs, headings, lists, links. Paste as plain text when possible to preserve spacing (Cmd+Shift+V). The live site reflows pasted book or web text into full-width paragraphs."
         }
 
   - name: "calendar"
