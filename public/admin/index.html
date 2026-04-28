@@ -13,6 +13,48 @@
       if (typeof CMS !== "undefined" && CMS.registerPreviewStyle) {
         CMS.registerPreviewStyle("/admin/decap-preview.css");
       }
+
+      /**
+       * Normalize paste to plain text in Decap editors.
+       * Prevents browser/HTML paste conversion from collapsing spaces between words.
+       */
+      document.addEventListener(
+        "paste",
+        (event) => {
+          const target = event.target;
+          if (!(target instanceof HTMLElement)) return;
+
+          const isTextarea = target instanceof HTMLTextAreaElement;
+          const isRichEditor = target.isContentEditable;
+          if (!isTextarea && !isRichEditor) return;
+
+          const text = event.clipboardData?.getData("text/plain");
+          if (!text) return;
+
+          event.preventDefault();
+
+          if (isTextarea) {
+            const textarea = target;
+            const start = textarea.selectionStart ?? textarea.value.length;
+            const end = textarea.selectionEnd ?? start;
+            textarea.setRangeText(text, start, end, "end");
+            textarea.dispatchEvent(new Event("input", { bubbles: true }));
+            return;
+          }
+
+          if (document.queryCommandSupported?.("insertText")) {
+            document.execCommand("insertText", false, text);
+            return;
+          }
+
+          const selection = window.getSelection();
+          if (!selection || selection.rangeCount === 0) return;
+          selection.deleteFromDocument();
+          selection.getRangeAt(0).insertNode(document.createTextNode(text));
+          selection.collapseToEnd();
+        },
+        true
+      );
     </script>
   </body>
   </html>

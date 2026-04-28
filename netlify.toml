@@ -14,11 +14,11 @@
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-XSS-Protection = "1; mode=block"
-# Ensure clean URLs
+# Route /admin to Decap entrypoint without redirect loops in netlify dev
 [[redirects]]
   from = "/admin"
-  to = "/admin/"
-  status = 301
+  to = "/admin/index.html"
+  status = 200
 
 # Legacy paths (newsroom → news); mirrors next.config.js redirects
 [[redirects]]
