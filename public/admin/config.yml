@@ -164,8 +164,8 @@ collections:
           label: "Body",
           name: "body",
           widget: "markdown",
-          modes: ["raw"],
-          hint: "Markdown: paragraphs, headings, lists, links. Paste as plain text when possible to preserve spacing (Cmd+Shift+V). The live site reflows pasted book or web text into full-width paragraphs."
+          modes: ["rich_text", "raw"],
+          hint: "Rich text is enabled. If pasted text looks odd, switch to Raw mode or paste as plain text (Cmd+Shift+V). The live site keeps your paragraph breaks and lightly reflows hard-wrapped lines."
         }
 
   - name: "calendar"

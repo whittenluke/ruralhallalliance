@@ -46,54 +46,6 @@ function reflowLinesToParagraph(p: string): string {
 }
 
 /**
- * Merge consecutive short one-line “paragraphs” (common when HTML uses <p> per sentence
- * or each line became its own block after paste).
- */
-function mergeShortParagraphRuns(blocks: string[], shortMax = 240): string[] {
-  const out: string[] = [];
-  let run = "";
-
-  const flush = () => {
-    if (run) {
-      out.push(run);
-      run = "";
-    }
-  };
-
-  for (const raw of blocks) {
-    const t = raw.trim();
-    if (!t) continue;
-
-    if (isStructuralBlock(t)) {
-      flush();
-      if (/^<<<FENCE\d+>>>$/.test(t)) {
-        out.push(t);
-      } else if (/^#{1,6}\s/.test(t)) {
-        const lines = t.split("\n");
-        const head = lines[0];
-        const rest = lines.slice(1).join("\n").trim();
-        out.push(rest ? `${head}\n\n${reflowLinesToParagraph(rest)}` : head);
-      } else {
-        out.push(t);
-      }
-      continue;
-    }
-
-    const singleLine = !t.includes("\n");
-    const short = t.length <= shortMax;
-
-    if (singleLine && short) {
-      run = run ? `${run} ${t}` : t;
-    } else {
-      flush();
-      out.push(singleLine ? t : reflowLinesToParagraph(t));
-    }
-  }
-  flush();
-  return out;
-}
-
-/**
  * Prepare markdown body for ReactMarkdown: reflow hard-wrapped book/HTML pastes into
  * proper paragraphs so text wraps at the container edge.
  */
@@ -123,9 +75,7 @@ export function reflowMarkdownBodyForNews(body: string): string {
     return reflowLinesToParagraph(segment);
   });
 
-  const merged = mergeShortParagraphRuns(reflowed);
-
-  let out = merged.join("\n\n");
+  let out = reflowed.join("\n\n");
 
   out = out.replace(/<<<FENCE(\d+)>>>/g, (_, id) => fences[Number(id)] ?? "");
 
