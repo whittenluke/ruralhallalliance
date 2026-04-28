@@ -19,12 +19,6 @@ body {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  /*
-   * Plain textarea fields (e.g. calendar Summary) keep \n in the DOM; without this,
-   * HTML collapses line breaks into one “wall of text.” Markdown HTML uses separate
-   * <p> tags, so this does not merge real paragraphs there.
-   */
-  white-space: pre-line;
 }
 
 p {

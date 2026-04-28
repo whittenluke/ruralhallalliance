@@ -564,6 +564,7 @@ p {
   line-height: 1.45;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.95);
+  white-space: pre-line;
 }
 
 .home-hero-actions {
