@@ -1113,11 +1113,60 @@ button[type="submit"]:disabled {
   font-size: 1rem;
   line-height: 1.68;
   color: var(--color-text);
-  white-space: pre-wrap;
 }
 
 .about-page-block:last-child {
   margin-bottom: 0;
+}
+
+.about-page-markdown > :first-child {
+  margin-top: 0;
+}
+
+.about-page-markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.about-page-markdown p {
+  margin: 0 0 1rem 0;
+}
+
+.about-page-markdown h2 {
+  margin: 1.5rem 0 0.65rem 0;
+  font-size: 1.25rem;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-weight: 600;
+}
+
+.about-page-markdown ul,
+.about-page-markdown ol {
+  margin: 0 0 1rem 0;
+  padding-left: 1.35rem;
+}
+
+.about-page-markdown a {
+  color: var(--color-green);
+  font-weight: 600;
+  text-underline-offset: 2px;
+}
+
+.about-page-markdown a:hover {
+  color: var(--color-green-hover);
+}
+
+.about-page-markdown img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+  border-radius: 6px;
+}
+
+.about-page-markdown blockquote {
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 0 0.5rem 1rem;
+  border-left: 4px solid var(--color-border);
+  color: var(--color-text-muted);
 }
 
 .calendar-page-empty {

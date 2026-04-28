@@ -1,4 +1,15 @@
 import { getAboutPageContent } from "@/lib/content-pages";
+import ReactMarkdown from "react-markdown";
+
+function AboutMarkdownBlock({ markdown }: { markdown: string }) {
+  const trimmed = markdown.trim();
+  if (!trimmed) return null;
+  return (
+    <div className="about-page-block about-page-markdown">
+      <ReactMarkdown>{trimmed}</ReactMarkdown>
+    </div>
+  );
+}
 
 export default function AboutPage() {
   const page = getAboutPageContent();
@@ -12,20 +23,14 @@ export default function AboutPage() {
         {page.mission_heading ? (
           <h2 className="about-page-subheading">{page.mission_heading}</h2>
         ) : null}
-        {page.mission_body ? (
-          <p className="about-page-block">{page.mission_body}</p>
-        ) : null}
+        <AboutMarkdownBlock markdown={page.mission_body} />
 
         {page.who_we_serve_heading ? (
           <h2 className="about-page-subheading">{page.who_we_serve_heading}</h2>
         ) : null}
-        {page.who_we_serve_body ? (
-          <p className="about-page-block">{page.who_we_serve_body}</p>
-        ) : null}
+        <AboutMarkdownBlock markdown={page.who_we_serve_body} />
 
-        {page.body ? (
-          <p className="about-page-block">{page.body}</p>
-        ) : null}
+        <AboutMarkdownBlock markdown={page.body} />
       </section>
     </div>
   );
