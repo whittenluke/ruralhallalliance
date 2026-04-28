@@ -2,6 +2,7 @@ import { HomeGetInvolved } from "@/components/home-get-involved";
 import { HomeLatestUpdates } from "@/components/home-latest-updates";
 import { HomeUpcomingEvents } from "@/components/home-upcoming-events";
 import { getHomePageContent } from "@/lib/home-page";
+import ReactMarkdown from "react-markdown";
 
 export default function HomePage() {
   const home = getHomePageContent();
@@ -57,7 +58,11 @@ export default function HomePage() {
                   {home.intro_heading}
                 </h2>
               ) : null}
-              {home.intro_body ? <p className="home-intro-text">{home.intro_body}</p> : null}
+              {home.intro_body ? (
+                <div className="home-intro-text">
+                  <ReactMarkdown>{home.intro_body}</ReactMarkdown>
+                </div>
+              ) : null}
             </div>
             <img
               className="home-intro-seal"

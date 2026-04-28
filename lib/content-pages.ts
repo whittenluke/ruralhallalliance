@@ -10,13 +10,13 @@ function pickString(data: Record<string, unknown>, key: string): string {
   return String(v).trim();
 }
 
-function readPage(basename: string): { data: Record<string, unknown> } {
+function readPage(basename: string): { data: Record<string, unknown>; content: string } {
   try {
     const raw = fs.readFileSync(path.join(pagesDir, `${basename}.md`), "utf8");
-    const { data } = matter(raw);
-    return { data: data as Record<string, unknown> };
+    const { data, content } = matter(raw);
+    return { data: data as Record<string, unknown>, content: content.trim() };
   } catch {
-    return { data: {} };
+    return { data: {}, content: "" };
   }
 }
 
@@ -92,11 +92,11 @@ export function getGovernancePageContent(): GovernancePageContent {
       "Rural Hall Alliance is governed by a three-person Board of Directors.",
     body: ""
   };
-  const { data } = readPage("governance");
+  const { data, content } = readPage("governance");
   return {
     title: pickString(data, "title") || defaults.title,
     summary: pickString(data, "summary") || defaults.summary,
-    body: pickString(data, "body") || defaults.body
+    body: pickString(data, "body") || content || defaults.body
   };
 }
 

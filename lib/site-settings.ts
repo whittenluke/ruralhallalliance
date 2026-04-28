@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 
 export interface SiteSettings {
   site_title: string;
@@ -19,33 +20,23 @@ const defaults: SiteSettings = {
   footer_text: ""
 };
 
-function parseFrontmatter(fileContent: string): Record<string, string> {
-  if (!fileContent.startsWith("---")) return {};
-  const end = fileContent.indexOf("---", 3);
-  if (end === -1) return {};
-  const head = fileContent.slice(3, end).trim();
-  const data: Record<string, string> = {};
-  head.split("\n").forEach((line) => {
-    const idx = line.indexOf(":");
-    if (idx > -1) {
-      const key = line.slice(0, idx).trim();
-      const val = line.slice(idx + 1).trim();
-      data[key] = val.replace(/^"|"$/g, "");
-    }
-  });
-  return data;
+function pickString(data: Record<string, unknown>, key: string): string {
+  const v = data[key];
+  if (v == null) return "";
+  return String(v).trim();
 }
 
 export function getSiteSettings(): SiteSettings {
   try {
     const raw = fs.readFileSync(settingsPath, "utf8");
-    const data = parseFrontmatter(raw);
+    const { data } = matter(raw);
+    const frontmatter = data as Record<string, unknown>;
     return {
-      site_title: data.site_title ?? defaults.site_title,
-      site_tagline: data.site_tagline ?? defaults.site_tagline,
-      general_email: data.general_email ?? defaults.general_email,
-      media_email: data.media_email ?? defaults.media_email,
-      footer_text: data.footer_text ?? defaults.footer_text
+      site_title: pickString(frontmatter, "site_title") || defaults.site_title,
+      site_tagline: pickString(frontmatter, "site_tagline") || defaults.site_tagline,
+      general_email: pickString(frontmatter, "general_email") || defaults.general_email,
+      media_email: pickString(frontmatter, "media_email") || defaults.media_email,
+      footer_text: pickString(frontmatter, "footer_text") || defaults.footer_text
     };
   } catch {
     return { ...defaults };

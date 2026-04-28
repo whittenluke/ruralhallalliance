@@ -22,8 +22,18 @@ collections:
         fields:
           - { label: "Site Title", name: "site_title", widget: "string" }
           - { label: "Site Tagline", name: "site_tagline", widget: "string", required: false }
-          - { label: "General Email", name: "general_email", widget: "string" }
-          - { label: "Media Email", name: "media_email", widget: "string" }
+          - {
+              label: "General Email",
+              name: "general_email",
+              widget: "string",
+              pattern: ['^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Enter a valid email address."]
+            }
+          - {
+              label: "Media Email",
+              name: "media_email",
+              widget: "string",
+              pattern: ['^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Enter a valid email address."]
+            }
           - { label: "Footer Text", name: "footer_text", widget: "text", required: false }
 
   - name: "pages"
@@ -36,9 +46,22 @@ collections:
           - { label: "Hero Title", name: "hero_title", widget: "string" }
           - { label: "Hero Summary", name: "hero_summary", widget: "text" }
           - { label: "Primary CTA Label", name: "hero_primary_cta_label", widget: "string" }
-          - { label: "Primary CTA Link", name: "hero_primary_cta_link", widget: "string" }
+          - {
+              label: "Primary CTA Link",
+              name: "hero_primary_cta_link",
+              widget: "string",
+              hint: "Use an internal path like /news or a full URL like https://example.org",
+              pattern: ['^(\\/[^\\s]*)|(https?:\\/\\/[^\\s]+)$', "Use /path or a full http(s) URL."]
+            }
           - { label: "Secondary CTA Label", name: "hero_secondary_cta_label", widget: "string", required: false }
-          - { label: "Secondary CTA Link", name: "hero_secondary_cta_link", widget: "string", required: false }
+          - {
+              label: "Secondary CTA Link",
+              name: "hero_secondary_cta_link",
+              widget: "string",
+              required: false,
+              hint: "Use an internal path like /calendar or a full URL like https://example.org",
+              pattern: ['^(\\/[^\\s]*)|(https?:\\/\\/[^\\s]+)$', "Use /path or a full http(s) URL."]
+            }
           - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
           - { label: "Intro Heading", name: "intro_heading", widget: "string", required: false }
           - { label: "Intro Body", name: "intro_body", widget: "markdown", required: false }
@@ -72,7 +95,13 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Summary", name: "summary", widget: "text", required: false }
-          - { label: "Media Email", name: "media_email", widget: "string", required: false }
+          - {
+              label: "Media Email",
+              name: "media_email",
+              widget: "string",
+              required: false,
+              pattern: ['^$|^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Leave blank or enter a valid email address."]
+            }
       - file: "content/pages/membership.md"
         label: "Membership"
         name: "membership"
@@ -85,7 +114,13 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Summary", name: "summary", widget: "text", required: false }
-          - { label: "General Email", name: "general_email", widget: "string", required: false }
+          - {
+              label: "General Email",
+              name: "general_email",
+              widget: "string",
+              required: false,
+              pattern: ['^$|^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Leave blank or enter a valid email address."]
+            }
       - file: "content/pages/calendar-page.md"
         label: "Calendar Page"
         name: "calendar_page"
@@ -114,7 +149,8 @@ collections:
           label: "Slug",
           name: "slug",
           widget: "string",
-          hint: "URL segment only; filename is built from date + slug (e.g. parks-spring-notice → 2026-04-10-parks-spring-notice.md)"
+          hint: "URL segment only (lowercase + hyphens). Filename is built from date + slug (e.g. parks-spring-notice → 2026-04-10-parks-spring-notice.md)",
+          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, numbers, and hyphens only."]
         }
       - label: "Date"
         name: "date"
@@ -138,12 +174,31 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "File name, e.g. 2026-04-13-town-meeting" }
-      - { label: "Date (MM/DD/YYYY)", name: "date", widget: "string", hint: "e.g. 04/13/2026" }
+      - {
+          label: "Slug",
+          name: "slug",
+          widget: "string",
+          hint: "File name segment, e.g. 2026-04-13-town-meeting",
+          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, numbers, and hyphens only."]
+        }
+      - {
+          label: "Date (MM/DD/YYYY)",
+          name: "date",
+          widget: "string",
+          hint: "e.g. 04/13/2026",
+          pattern: ['^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}$', "Use MM/DD/YYYY format."]
+        }
       - { label: "Time", name: "time", widget: "string", required: false }
       - { label: "Location", name: "location", widget: "string", required: false, hint: "Venue name (shown with time on one line)" }
       - { label: "Address", name: "address", widget: "string", required: false, hint: "Street address on its own line below" }
-      - { label: "External Link", name: "external_link", widget: "string", required: false }
+      - {
+          label: "External Link",
+          name: "external_link",
+          widget: "string",
+          required: false,
+          hint: "Optional. Include full URL starting with http:// or https://",
+          pattern: ['^$|^https?:\\/\\/[^\\s]+$', "Leave blank or enter a full http(s) URL."]
+        }
       - {
           label: "Summary",
           name: "summary",
