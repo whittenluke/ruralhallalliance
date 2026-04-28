@@ -38,14 +38,24 @@ function parseFrontmatter(fileContent: string): Record<string, string> {
   return data;
 }
 
+/** YAML/Decap sometimes writes `null` or `~` — treat as empty so we don’t render mailto:null */
+function normalizeOptionalString(v: string | undefined): string {
+  const s = (v ?? "").trim();
+  if (!s) return "";
+  const lower = s.toLowerCase();
+  if (lower === "null" || lower === "~" || lower === "undefined") return "";
+  return s;
+}
+
 export function getMediaPageContent(): MediaPageContent {
   try {
     const raw = fs.readFileSync(mediaPath, "utf8");
     const data = parseFrontmatter(raw);
     return {
       title: data.title?.trim() || defaults.title,
-      summary: data.summary?.trim() || defaults.summary,
-      media_email: data.media_email?.trim() || defaults.media_email
+      /* Empty in Decap should mean no lede — don’t substitute copy from defaults */
+      summary: normalizeOptionalString(data.summary),
+      media_email: normalizeOptionalString(data.media_email) || defaults.media_email
     };
   } catch {
     return { ...defaults };
