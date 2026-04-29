@@ -9,6 +9,10 @@ function contentType(filePath: string): string {
   if (ext === ".yml" || ext === ".yaml") return "text/yaml; charset=utf-8";
   if (ext === ".html") return "text/html; charset=utf-8";
   if (ext === ".json") return "application/json; charset=utf-8";
+  if (ext === ".css") return "text/css; charset=utf-8";
+  if (ext === ".js") return "application/javascript; charset=utf-8";
+  if (ext === ".map") return "application/json; charset=utf-8";
+  if (ext === ".svg") return "image/svg+xml";
   return "application/octet-stream";
 }
 

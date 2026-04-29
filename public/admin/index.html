@@ -14,6 +14,25 @@
         CMS.registerPreviewStyle("/admin/decap-preview.css");
       }
 
+      const editorStyle = document.createElement("style");
+      editorStyle.textContent = `
+        textarea {
+          line-height: 1.35 !important;
+        }
+
+        /* Decap rich-text editor surface (contenteditable) */
+        [contenteditable="true"][role="textbox"],
+        [contenteditable="true"][data-slate-editor="true"] {
+          line-height: 1.35 !important;
+        }
+
+        [contenteditable="true"][role="textbox"] p,
+        [contenteditable="true"][data-slate-editor="true"] p {
+          margin: 0 0 0.35rem 0 !important;
+        }
+      `;
+      document.head.appendChild(editorStyle);
+
       /**
        * Normalize paste to plain text for raw markdown textareas only.
        * Do not mutate Decap rich-text DOM directly, or editor state can desync
@@ -24,16 +43,14 @@
         (event) => {
           const target = event.target;
           if (!(target instanceof HTMLTextAreaElement)) return;
-
           const text = event.clipboardData?.getData("text/plain");
           if (!text) return;
 
           event.preventDefault();
-          const textarea = target;
-          const start = textarea.selectionStart ?? textarea.value.length;
-          const end = textarea.selectionEnd ?? start;
-          textarea.setRangeText(text, start, end, "end");
-          textarea.dispatchEvent(new Event("input", { bubbles: true }));
+          const start = target.selectionStart ?? target.value.length;
+          const end = target.selectionEnd ?? start;
+          target.setRangeText(text, start, end, "end");
+          target.dispatchEvent(new Event("input", { bubbles: true }));
         },
         true
       );
