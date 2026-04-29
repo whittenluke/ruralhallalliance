@@ -12,7 +12,7 @@ mission_body: >-
   strengthens connections and enhances community well-being.”
 
 
-  ![](/uploads/garden-spot-sign.jpeg)
+  ![](/uploads/covington-memorial-park.webp)
 who_we_serve_heading: Who We Serve
 who_we_serve_body: The members of the Rural Hall Alliance consisting of
   residents, business owners, and other stakeholders of the local community.
