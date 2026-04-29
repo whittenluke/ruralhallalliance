@@ -4,10 +4,12 @@ import matter from "gray-matter";
 
 const pagesDir = path.join(process.cwd(), "content", "pages");
 
+/** Treat NBSP-only / whitespace-only CMS values as empty so optional fields don’t “stick”. */
 function pickString(data: Record<string, unknown>, key: string): string {
   const v = data[key];
   if (v == null) return "";
-  return String(v).trim();
+  const s = String(v).replace(/\u00a0/g, " ").trim();
+  return s.replace(/^[\s\u200b\u200c\u200d\u2060\ufeff]+$/u, "") ? s : "";
 }
 
 function readPage(basename: string): { data: Record<string, unknown>; content: string } {
@@ -88,15 +90,16 @@ export interface GovernancePageContent extends PageTitleSummary {
 export function getGovernancePageContent(): GovernancePageContent {
   const defaults: GovernancePageContent = {
     title: "Governance",
-    summary:
-      "Rural Hall Alliance is governed by a three-person Board of Directors.",
+    summary: "",
     body: ""
   };
   const { data, content } = readPage("governance");
   return {
     title: pickString(data, "title") || defaults.title,
     summary: pickString(data, "summary") || defaults.summary,
-    body: pickString(data, "body") || content || defaults.body
+    // Decap "Body" content should be the source of truth; frontmatter `body`
+    // is kept only as fallback for legacy entries.
+    body: content || pickString(data, "body") || defaults.body
   };
 }
 
