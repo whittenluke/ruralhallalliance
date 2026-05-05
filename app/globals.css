@@ -15,6 +15,8 @@
   --section-gap-mobile: clamp(2.5rem, 5vw, 3.5rem);
   --section-gap-desktop: clamp(4.5rem, 6vw, 6rem);
   --nav-breakpoint: 900px;
+  /* Short-page layout: space above footer + stable viewport fill (see body / .site-main) */
+  --site-main-pad-bottom: clamp(2rem, 5vmin, 3.75rem);
 }
 
 .visually-hidden {
@@ -38,6 +40,7 @@
 /* Reserve scrollbar width so layout doesn’t shift between short and long pages */
 html {
   scrollbar-gutter: stable;
+  height: 100%;
 }
 
 html,
@@ -51,6 +54,10 @@ body {
 
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
+  min-height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
@@ -67,7 +74,7 @@ h6 {
 
 /* Explicit size: nested <section><h1> is often downscaled by UA styles; <header><h1> is not */
 .page-title {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 clamp(0.65rem, 1.4vw, 1.05rem) 0;
   font-size: clamp(1.875rem, 1.2vw + 1.65rem, 2.25rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -107,6 +114,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-shrink: 0;
   background: var(--color-surface);
   color: var(--color-text);
   box-shadow: 0 1px 0 var(--color-border), var(--shadow-soft);
@@ -384,6 +392,7 @@ p {
 
 .site-footer {
   margin-top: 0;
+  flex-shrink: 0;
   padding: 1.25rem 0 1.5rem;
   background: var(--color-green);
   color: rgba(255, 255, 255, 0.95);
@@ -492,11 +501,14 @@ p {
 }
 
 .site-main {
-  padding-bottom: 0;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  padding-bottom: var(--site-main-pad-bottom);
 }
 
 .site-main > .container {
-  padding-top: 1.5rem;
+  padding-top: clamp(1.5rem, 3.5vw, 2.5rem);
 }
 
 /* Homepage hero — full-width, left-aligned headline (reference: civic landing pattern) */
@@ -1069,6 +1081,25 @@ button[type="submit"]:disabled {
   margin: 0 0 1rem 0;
   color: var(--color-text);
   opacity: 0.92;
+}
+
+/* Text-forward inner pages (e.g. Governance) — calmer space under H1 and before body */
+.governance-page {
+  max-width: 42rem;
+  padding-bottom: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.governance-page > .page-title {
+  margin-bottom: clamp(1rem, 2.4vw, 1.5rem);
+}
+
+.governance-page > .page-lede {
+  margin-bottom: clamp(1.35rem, 3.2vw, 2.1rem);
+  line-height: 1.65;
+}
+
+.governance-page .governance-page-body {
+  margin-top: 0.15rem;
 }
 
 .calendar-page-header .page-lede:last-child {

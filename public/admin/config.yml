@@ -22,18 +22,8 @@ collections:
         fields:
           - { label: "Site Title", name: "site_title", widget: "string" }
           - { label: "Site Tagline", name: "site_tagline", widget: "string", required: false }
-          - {
-              label: "General Email",
-              name: "general_email",
-              widget: "string",
-              pattern: ['^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Enter a valid email address."]
-            }
-          - {
-              label: "Media Email",
-              name: "media_email",
-              widget: "string",
-              pattern: ['^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Enter a valid email address."]
-            }
+          - { label: "General Email", name: "general_email", widget: "string" }
+          - { label: "Media Email", name: "media_email", widget: "string" }
           - { label: "Footer Text", name: "footer_text", widget: "text", required: false }
 
   - name: "pages"
@@ -50,8 +40,7 @@ collections:
               label: "Primary CTA Link",
               name: "hero_primary_cta_link",
               widget: "string",
-              hint: "Use an internal path like /news or a full URL like https://example.org",
-              pattern: ['^(\\/[^\\s]*)|(https?:\\/\\/[^\\s]+)$', "Use /path or a full http(s) URL."]
+              hint: "Internal path (/news) or full URL (https://…)"
             }
           - { label: "Secondary CTA Label", name: "hero_secondary_cta_label", widget: "string", required: false }
           - {
@@ -59,8 +48,7 @@ collections:
               name: "hero_secondary_cta_link",
               widget: "string",
               required: false,
-              hint: "Use an internal path like /calendar or a full URL like https://example.org",
-              pattern: ['^(\\/[^\\s]*)|(https?:\\/\\/[^\\s]+)$', "Use /path or a full http(s) URL."]
+              hint: "Internal path (/calendar) or full URL (https://…)"
             }
           - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
           - { label: "Intro Heading", name: "intro_heading", widget: "string", required: false }
@@ -100,7 +88,7 @@ collections:
               name: "media_email",
               widget: "string",
               required: false,
-              pattern: ['^$|^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Leave blank or enter a valid email address."]
+              hint: "Leave blank or use a valid email."
             }
       - file: "content/pages/membership.md"
         label: "Membership"
@@ -119,7 +107,7 @@ collections:
               name: "general_email",
               widget: "string",
               required: false,
-              pattern: ['^$|^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$', "Leave blank or enter a valid email address."]
+              hint: "Leave blank or use a valid email."
             }
       - file: "content/pages/calendar-page.md"
         label: "Calendar Page"
@@ -137,7 +125,7 @@ collections:
               name: "subheading",
               widget: "text",
               required: false,
-              default: "A public archive of official communications.",
+              default: "A public archive of official communications."
             }
 
   - name: "news"
@@ -155,8 +143,7 @@ collections:
           label: "Slug",
           name: "slug",
           widget: "string",
-          hint: "URL segment only (lowercase + hyphens). Filename is built from date + slug (e.g. parks-spring-notice → 2026-04-10-parks-spring-notice.md)",
-          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, numbers, and hyphens only."]
+          hint: "Lowercase, numbers, hyphens only. URL segment; filename is date + slug (e.g. 2026-04-10-parks-notice.md)."
         }
       - label: "Date"
         name: "date"
@@ -185,8 +172,7 @@ collections:
           label: "Slug",
           name: "slug",
           widget: "string",
-          hint: "File name segment, e.g. 2026-04-13-town-meeting",
-          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, numbers, and hyphens only."]
+          hint: "Filename stem (lowercase, numbers, hyphens), e.g. train-depot-open-house"
         }
       - { label: "Date", name: "date", widget: "string" }
       - { label: "Time", name: "time", widget: "string", required: false }
@@ -197,8 +183,7 @@ collections:
           name: "external_link",
           widget: "string",
           required: false,
-          hint: "Optional. Include full URL starting with http:// or https://",
-          pattern: ['^$|^https?:\\/\\/[^\\s]+$', "Leave blank or enter a full http(s) URL."]
+          hint: "Optional. Full URL with https://",
         }
       - {
           label: "Summary",
