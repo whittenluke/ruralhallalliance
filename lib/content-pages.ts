@@ -46,9 +46,11 @@ export function getNewsPageContent(): PageTitleSummary {
     summary: "A public archive of official communications."
   };
   const { data } = readPage("news-page");
+  const subheading = pickString(data, "subheading");
+  const legacySummary = pickString(data, "summary");
   return {
     title: pickString(data, "title") || defaults.title,
-    summary: pickString(data, "summary") || defaults.summary
+    summary: subheading || legacySummary || defaults.summary
   };
 }
 

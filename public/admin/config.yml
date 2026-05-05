@@ -132,7 +132,13 @@ collections:
         name: "news_page"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Summary", name: "summary", widget: "text", required: false }
+          - {
+              label: "Subheading",
+              name: "subheading",
+              widget: "text",
+              required: false,
+              default: "A public archive of official communications.",
+            }
 
   - name: "news"
     label: "News"
