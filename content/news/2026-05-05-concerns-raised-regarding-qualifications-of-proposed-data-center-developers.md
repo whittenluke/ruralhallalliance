@@ -9,7 +9,7 @@ summary: |
 
   Statement of Concern
 
-  For Forsyth County, NC
+  For Forsyth County, NC Residents and Businesses
 ---
 
 
