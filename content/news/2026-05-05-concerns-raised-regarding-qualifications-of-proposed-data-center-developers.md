@@ -11,19 +11,19 @@ summary: |
 
   For Forsyth County, NC Residents and Businesses
 ---
-
-
 May 5, 2026 
-
-*For Immediate Release*
 
 
 
 **Statement of Concern**
 
-*For Forsyth County, NC* 
+*For Forsyth County, NC* Residents and Businesses
+
+
 
 **Concerns raised regarding qualifications of proposed data center developers**
+
+
 
 **Rural Hall, NC, May 5, 2026:**  Rural Hall Alliance is issuing this statement of concern for Forsyth County, NC residents regarding the lack of experience and qualifications of Drox Group LLC of Charlotte, NC and Montrose LLC of Huntersville, NC who are requesting to build an expansive hyperscale data center in Rural Hall, NC.
 
