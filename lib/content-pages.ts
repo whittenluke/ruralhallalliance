@@ -41,16 +41,12 @@ export function getCalendarPageContent(): PageTitleSummary {
 }
 
 export function getNewsPageContent(): PageTitleSummary {
-  const defaults: PageTitleSummary = {
-    title: "News",
-    summary: "A public archive of official communications."
-  };
   const { data } = readPage("news-page");
   const subheading = pickString(data, "subheading");
   const legacySummary = pickString(data, "summary");
   return {
-    title: pickString(data, "title") || defaults.title,
-    summary: subheading || legacySummary || defaults.summary
+    title: pickString(data, "title") || "News",
+    summary: subheading || legacySummary
   };
 }
 
