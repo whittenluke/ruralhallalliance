@@ -188,13 +188,7 @@ collections:
           hint: "File name segment, e.g. 2026-04-13-town-meeting",
           pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Use lowercase letters, numbers, and hyphens only."]
         }
-      - {
-          label: "Date (MM/DD/YYYY)",
-          name: "date",
-          widget: "string",
-          hint: "e.g. 04/13/2026",
-          pattern: ['^(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}$', "Use MM/DD/YYYY format."]
-        }
+      - { label: "Date", name: "date", widget: "string" }
       - { label: "Time", name: "time", widget: "string", required: false }
       - { label: "Location", name: "location", widget: "string", required: false, hint: "Venue name (shown with time on one line)" }
       - { label: "Address", name: "address", widget: "string", required: false, hint: "Street address on its own line below" }
