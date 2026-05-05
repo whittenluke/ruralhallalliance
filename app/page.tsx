@@ -1,6 +1,8 @@
 import { HomeGetInvolved } from "@/components/home-get-involved";
 import { HomeLatestUpdates } from "@/components/home-latest-updates";
 import { HomeUpcomingEvents } from "@/components/home-upcoming-events";
+import { markdownComponents } from "@/components/markdown-components";
+import { anchorPropsForHref } from "@/lib/external-link";
 import { getHomePageContent } from "@/lib/home-page";
 import ReactMarkdown from "react-markdown";
 
@@ -32,12 +34,14 @@ export default function HomePage() {
               <a
                 className="btn btn-secondary btn-lg home-hero-btn-news"
                 href={home.hero_primary_cta_link}
+                {...anchorPropsForHref(home.hero_primary_cta_link)}
               >
                 {home.hero_primary_cta_label}
               </a>
               <a
                 className="btn btn-primary btn-lg home-hero-btn-calendar"
                 href={home.hero_secondary_cta_link}
+                {...anchorPropsForHref(home.hero_secondary_cta_link)}
               >
                 {home.hero_secondary_cta_label}
               </a>
@@ -60,7 +64,7 @@ export default function HomePage() {
               ) : null}
               {home.intro_body ? (
                 <div className="home-intro-text">
-                  <ReactMarkdown>{home.intro_body}</ReactMarkdown>
+                  <ReactMarkdown components={markdownComponents}>{home.intro_body}</ReactMarkdown>
                 </div>
               ) : null}
             </div>

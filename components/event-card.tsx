@@ -1,5 +1,5 @@
-import type { CalendarEntry } from "@/lib/calendar";
-import { formatCalendarDate } from "@/lib/calendar";
+import { formatCalendarDate, type CalendarEntry } from "@/lib/calendar";
+import { anchorPropsForHref } from "@/lib/external-link";
 
 type Props = {
   event: CalendarEntry;
@@ -30,13 +30,21 @@ export function EventCard({
       {e.summary ? <p className="event-card-summary">{e.summary}</p> : null}
       {e.external_link?.trim() ? (
         <p className="event-card-more">
-          <a href={e.external_link.trim()} className="event-card-link">
+          <a
+            href={e.external_link.trim()}
+            className="event-card-link"
+            {...anchorPropsForHref(e.external_link.trim())}
+          >
             More details
           </a>
         </p>
       ) : fallbackDetailsHref ? (
         <p className="event-card-more">
-          <a href={fallbackDetailsHref} className="event-card-link">
+          <a
+            href={fallbackDetailsHref}
+            className="event-card-link"
+            {...anchorPropsForHref(fallbackDetailsHref)}
+          >
             {fallbackDetailsLabel}
           </a>
         </p>

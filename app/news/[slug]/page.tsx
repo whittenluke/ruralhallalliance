@@ -1,3 +1,4 @@
+import { markdownComponents } from "@/components/markdown-components";
 import {
   formatNewsDisplayDate,
   getAllNewsEntries,
@@ -63,7 +64,9 @@ export default function NewsDetailPage({ params }: { params: { slug: string } })
         <div className="news-article-body prose">
           {entry.body.trim() ? (
             <div className="news-article-text news-article-text--markdown">
-              <ReactMarkdown>{reflowMarkdownBodyForNews(entry.body)}</ReactMarkdown>
+              <ReactMarkdown components={markdownComponents}>
+                {reflowMarkdownBodyForNews(entry.body)}
+              </ReactMarkdown>
             </div>
           ) : null}
         </div>

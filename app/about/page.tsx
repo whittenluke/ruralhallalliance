@@ -1,3 +1,4 @@
+import { markdownComponents } from "@/components/markdown-components";
 import { getAboutPageContent } from "@/lib/content-pages";
 import ReactMarkdown from "react-markdown";
 
@@ -6,7 +7,7 @@ function AboutMarkdownBlock({ markdown }: { markdown: string }) {
   if (!trimmed) return null;
   return (
     <div className="about-page-block about-page-markdown">
-      <ReactMarkdown>{trimmed}</ReactMarkdown>
+      <ReactMarkdown components={markdownComponents}>{trimmed}</ReactMarkdown>
     </div>
   );
 }

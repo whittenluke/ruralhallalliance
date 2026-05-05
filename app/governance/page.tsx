@@ -1,5 +1,6 @@
-import ReactMarkdown from "react-markdown";
+import { markdownComponents } from "@/components/markdown-components";
 import { getGovernancePageContent } from "@/lib/content-pages";
+import ReactMarkdown from "react-markdown";
 
 export default function GovernancePage() {
   const page = getGovernancePageContent();
@@ -11,7 +12,7 @@ export default function GovernancePage() {
         {page.summary ? <p className="page-lede">{page.summary}</p> : null}
         {page.body ? (
           <div className="prose governance-page-body">
-            <ReactMarkdown>{page.body}</ReactMarkdown>
+            <ReactMarkdown components={markdownComponents}>{page.body}</ReactMarkdown>
           </div>
         ) : null}
       </section>
