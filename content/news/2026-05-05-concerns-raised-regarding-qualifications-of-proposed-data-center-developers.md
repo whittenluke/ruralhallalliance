@@ -3,9 +3,9 @@ title: Concerns raised regarding qualifications of proposed data center develope
 slug: qualifications-data-center-developers
 date: 2026-05-05
 category: Statement of Concern
-summary: |+
+summary: |
   May 5, 2026  
-  For Immediate Release
+
 
   Statement of Concern
 
